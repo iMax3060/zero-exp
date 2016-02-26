@@ -19,4 +19,5 @@ for d in "${!DEVS[@]}"; do
     use_btrfs=${USE_BTRFS[$d]}
 
     formatDevice $devpath $mountpath $use_btrfs
+    echo "---------------------------------------------------------"
 done

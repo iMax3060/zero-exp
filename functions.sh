@@ -110,7 +110,6 @@ function createFS
         fi
     fi
 
-    echo "Formatting $DEVICE"
     # local cmd=mke2fs
     # [ -x $(which $cmd) ] || die "Command not found: $cmd"
 
@@ -132,7 +131,6 @@ function createBTRFS
         fi
     fi
 
-    echo "Formatting $DEVICE"
     # local cmd=mke2fs
     # [ -x $(which $cmd) ] || die "Command not found: $cmd"
 
@@ -148,7 +146,8 @@ function formatDevice
 
     [ -n "$MOUNTOPTS" ] || die "Global variable MOUNTOPTS must be defined"
 
-    echo "Processing device $devpath"
+    echo "Formatting device $devpath and mounting it on $mountpath"
+    sudo -n mkdir -p $mountpath
 
     # Unmount
     if mount | grep -q "$devpath" -; then
@@ -158,7 +157,6 @@ function formatDevice
 
     # Format and mount
     mkdir -p $mountpath
-    # if [[ "$d" == "db" ]]; then
     if [ "$use_btrfs" = true ]; then
         createBTRFS $devpath "-f" $FORCE
         sudo -n mount -o "$MOUNTOPTS,user_subvol_rm_allowed" $devpath $mountpath
@@ -167,12 +165,12 @@ function formatDevice
         sudo -n mount -o $MOUNTOPTS $devpath $mountpath
     fi
 
-    # Create snapshot for old/shadow data
-    if ${USE_BTRFS[$d]}; then
-        btrfs subvolume create $mountpath/old
-    fi
-
     # Get username of script owner
     USER=$(stat -c %U $0)
-    chown -R $USER $mountpath
+    sudo -n chown -R $USER $mountpath
+
+    # Create snapshot for old/shadow data
+    if [ "$use_btrfs" = true ]; then
+        btrfs subvolume create $mountpath/old
+    fi
 }
