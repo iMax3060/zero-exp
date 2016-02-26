@@ -14,22 +14,29 @@ SOURCE=$SNAPDIR/$SNAPID
 set -e
 
 for d in "${!DEVS[@]}"; do
-    mountpath=${MOUNTPOINT[$d]}
+    targetdir=${MOUNTPOINT[$d]}
     use_btrfs=${USE_BTRFS[$d]}
 
-    echo -n "Copying $d ... "
     if [ "$use_btrfs" = true ]; then
         # rsync will be instantaneous if first old/shadow copy was already made
-        rsync -a $SOURCE/$d $mountpath/old/$d
-        if [ -d $mountpath/new ]; then
-            # delete current dirty-copy snapshot
-            btrfs subvolume delete $mountpath/new
+        if [ ! -d $targetdir/old ]; then
+            btrfs subvolume create $targetdir/old
         fi
+        echo -n "Copying $d ... "
+        rsync -a $SOURCE/$d $targetdir/old/
+        echo "OK"
+
+        if [ -d $targetdir/new ]; then
+            # delete current dirty-copy snapshot
+            btrfs subvolume delete $targetdir/new
+        fi
+
         # create new dirty snapshot from shadow one
-        btrfs subvolume snapshot $mountpath/old $mountpath/new
-        ln -fs $mountpath/new/$s $mountpath/db
+        btrfs subvolume snapshot $targetdir/old $targetdir/new
+        ln -fs $targetdir/new/$d $targetdir/$d
     else
-        rsync -a --delete $SOURCE/$d $mountpath/$d
+        echo -n "Copying $d ... "
+        rsync -a --delete $SOURCE/$d $targetdir/
+        echo "OK"
     fi
-    echo "OK"
 done
