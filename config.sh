@@ -28,7 +28,7 @@ USE_BTRFS[db]=true
 USE_BTRFS[backup]=false
 
 # Where snapshots of data and log will be saved
-SNAPDIR=/mnt/snapshots
+SNAPDIR=/mnt/snap
 
 MOUNTOPTS="noatime,noexec,noauto,nodev,nosuid"
 

@@ -14,12 +14,17 @@ TARGET=$SNAPDIR/$SNAPID
 set -e
 
 for d in "${!DEVS[@]}"; do
-    mountpath=${MOUNTPOINT[$d]}
+    sourcedir=${MOUNTPOINT[$d]}
     use_btrfs=${USE_BTRFS[$d]}
 
+    if [ "$use_btrfs" == "true" ]; then
+        sourcedir=$sourcedir/old
+    fi
+
+    echo "Copying $d to $TARGET"
     mkdir -p $TARGET
-    rsync -aq --copy-links --delete $mountpath/$d $TARGET/$d
+    rsync -aq --copy-links --delete $sourcedir/$d $TARGET
 done
 
 # Copy special output files
-cp out?.txt $TARGET/
+cp out?.txt $TARGET/ 2> /dev/null
