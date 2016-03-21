@@ -169,8 +169,8 @@ function formatDevice
     USER=$(stat -c %U $0)
     sudo -n chown -R $USER $mountpath
 
-    # Create snapshot for old/shadow data
+    # Create snapshot for loading data
     if [ "$use_btrfs" = true ]; then
-        btrfs subvolume create $mountpath/old
+        btrfs subvolume create $mountpath/new
     fi
 }

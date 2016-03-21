@@ -15,14 +15,27 @@ IOSTAT_PID=$!
 mpstat 1 > mpstat.txt 2> /dev/null &
 MPSTAT_PID=$!
 
-DBDIR=${MOUNTPOINT[db]}
-if [ "${USE_BTRFS[db]}" == "true" ]; then DBDIR=$DBDIR/old; fi
-LOGDIR=${MOUNTPOINT[log]}
-if [ "${USE_BTRFS[log]}" == "true" ]; then LOGDIR=$LOGDIR/old; fi
-ARCHDIR=${MOUNTPOINT[archive]}
-if [ "${USE_BTRFS[log]}" == "true" ]; then ARCHDIR=$ARCHDIR/old; fi
+KITS_OPTS=""
 
-CMD="zapps kits $* -d $DBDIR/db -l $LOGDIR/log -a $ARCHDIR/archive"
+DBDIR=${MOUNTPOINT[db]}
+if [ -n "$DBDIR" ]; then
+    if [ "${USE_BTRFS[db]}" == "true" ]; then DBDIR=$DBDIR/new; fi
+    KITS_OPTS+=" --sm_dbfile $DBDIR/db"
+fi
+
+LOGDIR=${MOUNTPOINT[log]}
+if [ -n "$LOGDIR" ]; then
+    if [ "${USE_BTRFS[log]}" == "true" ]; then LOGDIR=$LOGDIR/new; fi
+    KITS_OPTS+=" --sm_logdir $LOGDIR/log"
+fi
+
+ARCHDIR=${MOUNTPOINT[archive]}
+if [ -n "$ARCHDIR" ]; then
+    if [ "${USE_BTRFS[archive]}" == "true" ]; then ARCHDIR=$ARCHDIR/new; fi
+    KITS_OPTS+=" --sm_archdir $ARCHDIR/archive"
+fi
+
+CMD="zapps kits $KITS_OPTS $*"
 EXIT_CODE=0
 
 echo -n "Running kits benchmark ... "

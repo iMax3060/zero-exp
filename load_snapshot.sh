@@ -18,13 +18,12 @@ for d in "${!DEVS[@]}"; do
     use_btrfs=${USE_BTRFS[$d]}
 
     if [ "$use_btrfs" = true ]; then
-        # rsync will be instantaneous if first old/shadow copy was already made
         if [ ! -d $targetdir/old ]; then
             btrfs subvolume create $targetdir/old
+            echo -n "Copying $d ... "
+            rsync -a $SOURCE/$d $targetdir/old/
+            echo "OK"
         fi
-        echo -n "Copying $d ... "
-        rsync -a $SOURCE/$d $targetdir/old/
-        echo "OK"
 
         if [ -d $targetdir/new ]; then
             # delete current dirty-copy snapshot

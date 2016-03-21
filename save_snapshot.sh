@@ -18,7 +18,13 @@ for d in "${!DEVS[@]}"; do
     use_btrfs=${USE_BTRFS[$d]}
 
     if [ "$use_btrfs" == "true" ]; then
-        sourcedir=$sourcedir/old
+        if [ -d $sourcedir/old ]; then
+            # Delete old snapshot if already existing
+            btrfs subvolume delete $sourcedir/old
+        fi
+
+        # Data is copied from "new" snapshot
+        sourcedir=$sourcedir/new
     fi
 
     echo "Copying $d to $TARGET"
