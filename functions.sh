@@ -93,6 +93,7 @@ function setupPrivileges()
     setupSudo $USER /bin/mount
     setupSudo $USER /bin/umount
     setupSudo $USER /bin/chmod
+    setupSudo $USER /bin/mkdir
     setupSudo $USER /sbin/btrfs
 }
 

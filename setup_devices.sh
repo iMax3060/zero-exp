@@ -11,9 +11,15 @@ set -e
 FORCE=false
 if [[ "$1" == "--force" ]]; then
     FORCE=true
+    shift 1
 fi
 
-for d in "${!DEVS[@]}"; do
+ITER=${!DEVS[@]}
+if [ -n "$1" ]; then
+    ITER=$1
+fi
+
+for d in $ITER; do
     devpath=${DEVS[$d]} 
     mountpath=${MOUNTPOINT[$d]}
     use_btrfs=${USE_BTRFS[$d]}

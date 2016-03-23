@@ -38,14 +38,12 @@ fi
 CMD="zapps kits $KITS_OPTS $*"
 EXIT_CODE=0
 
-echo -n "Running kits benchmark ... "
 if $RUN_GDB; then
     gdb -ex run --args $CMD
 else
     $CMD 1> out1.txt 2> out2.txt
     EXIT_CODE=$?
 fi
-echo "OK"
 
 kill $IOSTAT_PID > /dev/null 2>&1
 kill $MPSTAT_PID > /dev/null 2>&1
