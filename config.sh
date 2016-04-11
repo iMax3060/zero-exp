@@ -24,7 +24,7 @@ MOUNTPOINT[backup]=/mnt/backup
 # Whether to use btrfs or ext3 (w/o journal)
 USE_BTRFS[log]=false
 USE_BTRFS[archive]=false
-USE_BTRFS[db]=true
+USE_BTRFS[db]=false
 USE_BTRFS[backup]=false
 
 # Where snapshots of data and log will be saved

@@ -3,6 +3,11 @@
 source functions.sh || (echo "functions.sh not found!"; exit)
 source config.sh || (echo "config.sh not found!"; exit)
 
+function clean_up {
+    kill $IOSTAT_PID > /dev/null 2>&1
+    kill $MPSTAT_PID > /dev/null 2>&1
+}
+
 RUN_GDB=false
 if [[ "$1" == "--debug" ]]; then
     RUN_GDB=true
@@ -14,6 +19,9 @@ IOSTAT_PID=$!
 
 mpstat 1 > mpstat.txt 2> /dev/null &
 MPSTAT_PID=$!
+
+# Call clean_up when recieving one of these signals
+trap clean_up SIGHUP SIGINT SIGTERM
 
 KITS_OPTS=""
 
@@ -45,7 +53,6 @@ else
     EXIT_CODE=$?
 fi
 
-kill $IOSTAT_PID > /dev/null 2>&1
-kill $MPSTAT_PID > /dev/null 2>&1
+clean_up
 
 exit $EXIT_CODE

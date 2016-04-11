@@ -117,7 +117,6 @@ function runOnce()
     $RUN_CMD $ARGS
     RC=$?
     if [[ $RC != 0 ]]; then
-        touch $DEST/_FAILED
         echo "ERROR on experiment run!"
         return $RC
     fi
