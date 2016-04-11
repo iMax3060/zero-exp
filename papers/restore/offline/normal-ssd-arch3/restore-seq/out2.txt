@@ -1,0 +1,15 @@
+Set option crash to 0
+Set option db-worker-sli to 0
+Set option eager to 1
+Set option evict to 0
+Set option instant to 0
+Set option load to 0
+Set option offline to 1
+Set option ondemand to 1
+Set option randomOrder to 0
+Set option sharpBackup to 0
+Set option singlePass to 0
+Set option skew to 0
+Set option spread to 1
+Set option truncateLog to 0
+Set option waitForRestore to 0

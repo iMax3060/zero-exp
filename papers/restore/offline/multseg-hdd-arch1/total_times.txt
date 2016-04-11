@@ -1,0 +1,10 @@
+64KB 9104 multseg-hdd-arch1//restore-32/agglog.txt
+128KB 5191 multseg-hdd-arch1//restore-64/agglog.txt
+256KB 3042 multseg-hdd-arch1//restore-128/agglog.txt
+512KB 916 multseg-hdd-arch1//restore-256/agglog.txt
+1024KB 393 multseg-hdd-arch1//restore-512/agglog.txt
+2048KB 285 multseg-hdd-arch1//restore-1024/agglog.txt
+4096KB 269 multseg-hdd-arch1//restore-2048/agglog.txt
+8192KB 253 multseg-hdd-arch1//restore-4096/agglog.txt
+16384KB 198 multseg-hdd-arch1//restore-8192/agglog.txt
+32768KB 245 multseg-hdd-arch1//restore-16384/agglog.txt

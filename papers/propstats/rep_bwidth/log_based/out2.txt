@@ -1,0 +1,363 @@
+Set option db-worker-sli to 0
+Set option eager to 1
+Set option load to 0
+Set option skew to 0
+Set option sm_archiver_eager to 1
+Set option sm_archiving to 1
+Set option sm_cleaner_decoupled to 1
+Set option sm_cleaner_ignore_metadata to 1
+Set option sm_format to 0
+Set option sm_log_delete_old_partitions to 0
+Set option sm_logging to 1
+Set option sm_shutdown_clean to 0
+Set option sm_truncate_log to 0
+Set option spread to 1
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (247) [0.004] Initializing lock manager
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (254) [137.393] Initializing log manager (part 1)
+Initialized curr_lsn to 17.256
+Log _start 256 end_byte() 256
+Log _curr_lsn 17.256 _durable_lsn 17.256
+Curr epoch  base_lsn 17.0  base 0  start 256  end 256
+Old epoch  base_lsn 0.0  base 0  start 0  end 0
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (261) [2.903] Initializing log manager (part 2)
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (273) [0.083] Initializing log archiver
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (282) [193.969] Initializing restart manager
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/restart.cpp (136) Log analysis found 0 dirty pages and 0 active transactions
+ACTIVE TRANSACTIONS
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (292) [0.579] Initializing volume manager
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (299) [0.058] Initializing buffer manager
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (306) [306.419] Building volume manager caches
+STNODE CACHE:
+stid: 1 root: 2
+stid: 2 root: 3
+stid: 3 root: 4
+stid: 4 root: 5
+stid: 5 root: 6
+stid: 6 root: 7
+stid: 7 root: 8
+stid: 8 root: 9
+stid: 9 root: 10
+stid: 10 root: 11
+stid: 11 root: 12
+stid: 12 root: 13
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (321) [5.147] Initializing buffer cleaner and other services
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (340) [0.927] Performing offline recovery
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (372) [0.103] Finished SM initialization
+[7f81be153700] /home/csauer/hp/zero/src/sm/restart.cpp (394) Finished concurrent REDO of 0 pages
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f79f6ffd700] /home/csauer/hp/zero/src/sm/bf_tree.cpp (1195) Finished warmup! Pages fixed: 1644062 of 3840000 with DB size 1638400
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (25) Nothing archived to clean.
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (29) Cleaner thread activated from 17.256
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (29) Cleaner thread activated from 17.935420768
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (29) Cleaner thread activated from 24.295157024
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (29) Cleaner thread activated from 32.296357784
+[7f820ca55700] /home/csauer/hp/zero/src/sm/page_cleaner_decoupled.cpp (29) Cleaner thread activated from 41.86607240
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (409) Terminating recovery manager
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (444) SM performing dirty shutdown
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (453) Terminating other services
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (459) Terminating log archiver
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (472) Terminating buffer manager
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (481) Terminating volume
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (489) Terminating log manager
+[7f84af7f5700] /home/csauer/hp/zero/src/sm/sm.cpp (503) SM shutdown complete!

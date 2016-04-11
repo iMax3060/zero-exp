@@ -1,0 +1,22 @@
+Set option crash to 0
+Set option db-worker-sli to 0
+Set option eager to 1
+Set option evict to 0
+Set option instant to 1
+Set option load to 0
+Set option offline to 0
+Set option ondemand to 1
+Set option randomOrder to 0
+Set option sharpBackup to 0
+Set option singlePass to 1
+Set option skew to 0
+Set option sm_restore_preemptive to 1
+Set option sm_restore_reuse_buffer to 1
+Set option sm_shutdown_clean to 0
+Set option spread to 1
+Set option truncateLog to 0
+Set option waitForRestore to 0
+[7fd1a7fff700] /home/csauer/hp/zero/src/sm/bf_tree.cpp (3279) Finished warmup! Pages fixed: 5760007 of 5760000 with DB size 13667636
+[7fd14efed700] /home/csauer/hp/zero/src/sm/restore.cpp (936) Restore waiting for log archiver to reach LSN 7.47676493512
+[7fd14efed700] /home/csauer/hp/zero/src/sm/restore.cpp (953) Log archiver finished in 5.0665 seconds
+[7fe02cef4700] /home/csauer/hp/zero/src/sm/bf_tree_cleaner.cpp (448) the system is going to shutdown dirtily. this cleaner will shutdown without flushing!

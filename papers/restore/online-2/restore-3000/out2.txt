@@ -1,0 +1,19 @@
+Set option crash to 0
+Set option db-worker-sli to 0
+Set option eager to 1
+Set option evict to 0
+Set option instant to 1
+Set option load to 0
+Set option offline to 0
+Set option ondemand to 1
+Set option randomOrder to 0
+Set option sharpBackup to 0
+Set option singlePass to 1
+Set option skew to 0
+Set option sm_restore_reuse_buffer to 1
+Set option sm_shutdown_clean to 0
+Set option spread to 1
+Set option truncateLog to 0
+Set option waitForRestore to 0
+[7f425affd700] /home/csauer/hp/zero/src/sm/bf_tree.cpp (3279) Finished warmup! Pages fixed: 384024 of 384000 with DB size 1731542
+[7f43458ef700] /home/csauer/hp/zero/src/sm/bf_tree_cleaner.cpp (448) the system is going to shutdown dirtily. this cleaner will shutdown without flushing!

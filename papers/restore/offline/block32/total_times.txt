@@ -1,0 +1,6 @@
+SEQ 544 restore-seq/agglog.txt
+32 2745 restore-32/agglog.txt
+128 1077 restore-128/agglog.txt
+256 796 restore-256/agglog.txt
+512 664 restore-512/agglog.txt
+1024 588 restore-1024/agglog.txt

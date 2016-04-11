@@ -1,0 +1,13 @@
+hottest-2k 439.048
+coldest-2k 453.107
+oldest-2k 474.522
+oldest-20k 545.235
+coldest-20k 549.54
+hottest-20k 552.83
+hottest-200k 625.81
+oldest-200k 666.943
+coldest-200k 672.015
+no-policy 741.603
+clustered-32 2322.03
+clustered-8 2340.54
+log-based 12891.5

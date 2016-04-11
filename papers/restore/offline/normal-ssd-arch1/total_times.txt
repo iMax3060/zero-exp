@@ -1,0 +1,12 @@
+1MB 4184 normal-ssd-arch1//restore-128/agglog.txt
+2MB 2099 normal-ssd-arch1//restore-256/agglog.txt
+4MB 1068 normal-ssd-arch1//restore-512/agglog.txt
+8MB 525 normal-ssd-arch1//restore-1024/agglog.txt
+16MB 294 normal-ssd-arch1//restore-2048/agglog.txt
+32MB 158 normal-ssd-arch1//restore-4096/agglog.txt
+64MB 96 normal-ssd-arch1//restore-8192/agglog.txt
+128MB 91 normal-ssd-arch1//restore-16384/agglog.txt
+256MB 77 normal-ssd-arch1//restore-32768/agglog.txt
+512MB 76 normal-ssd-arch1//restore-65536/agglog.txt
+1024MB 83 normal-ssd-arch1//restore-131072/agglog.txt
+SEQ 73 normal-ssd-arch1//restore-seq/agglog.txt

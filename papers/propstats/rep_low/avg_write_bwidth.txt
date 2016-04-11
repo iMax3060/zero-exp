@@ -1,0 +1,7 @@
+clustered-8 163.827
+oldest-20k 1931.01
+coldest-200k 1978.5
+coldest-20k 2026.15
+oldest-200k 2048.73
+mixed-200k 2084.54
+log-based 13521.6

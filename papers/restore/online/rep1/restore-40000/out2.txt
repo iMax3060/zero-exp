@@ -1,0 +1,24 @@
+Set option crash to 0
+Set option db-worker-sli to 0
+Set option eager to 1
+Set option evict to 0
+Set option instant to 1
+Set option load to 0
+Set option offline to 0
+Set option ondemand to 1
+Set option randomOrder to 0
+Set option sharpBackup to 0
+Set option singlePass to 1
+Set option skew to 0
+Set option sm_restore_preemptive to 1
+Set option sm_restore_reuse_buffer to 1
+Set option sm_shutdown_clean to 0
+Set option spread to 1
+Set option truncateLog to 0
+Set option waitForRestore to 0
+[7fe3687e8700] /home/csauer/hp/zero/src/sm/bf_tree.cpp (3279) Finished warmup! Pages fixed: 5120007 of 5120000 with DB size 13667636
+[7fe3d75ea700] /home/csauer/hp/zero/src/sm/logarchiver.cpp (1691) Log archiver flush request finished in 4.43374 seconds
+assertion failure: status[i] == SLOT_UNFIXED
+1. error in /home/csauer/hp/zero/src/sm/backup_reader.cpp:142 Assertion failed
+	called from:
+	0) /home/csauer/hp/zero/src/sm/backup_reader.cpp:142
