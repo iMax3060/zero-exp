@@ -30,6 +30,12 @@ MOUNTPOINT[log]=/mnt/log
 MOUNTPOINT[db]=/mnt/db
 ```
 
+Furthermore, a variable `MOUNTOPTS` must be defined for the mount options:
+
+```bash
+MOUNTOPTS="noatime,noexec,noauto,nodev,nosuid"
+```
+
 If no dedicated device is required, thus skipping formatting and mounting and simply using an existing filesystem path, then the corresponding entry must be omitted from the `DEVS` array and the path is defined in `MOUNTPOINT`. For example, to use a dedicated log device and store the database in a normal directory:
 
 ```bash
@@ -44,13 +50,31 @@ This is supported natively by our scripts because snapshots can be managed more 
 
 The script must be run as root, and it verifies, for each filesystem being mounted, if it already exists before proceeding -- if that's the case, the user is prompted for a confirmation. To ignore this prompt, the argument `--force` can be passed.
 
-Once the `config.sh` file is created (a [sample one](./config.sh) is provided with the repository, the script can be invoked with:
+Once the `config.sh` file is created (a [sample one](./config.sh) is provided with the repository), the script can be invoked with:
 
 ```
 sudo ./setup_devices.sh
 ```
 
-## Loading data
+## Data loading and single runs
+
+The script `run_kits.sh` is a simple wrapper over the Kits benchmark suite included with Zero.
+It simply invokes it with the given arguments, adding the devices specified in `config.sh` and initialized with `setup_devices.sh` to the command line automatically.
+Furthermore, it saves the standard output in the file `out1.txt` and the error output in `out2.txt`.
+
+For documentation on the options that can be passed to Kits, see the [Zero repository](https://github.com/caetanosauer/zero). To load data into empty devices, the `--load` option must be given.
+The following example loads a TPC-C database with scaling factor 10 and 5 loader threads:
+
+```bash
+./run_kits.sh -b tpcc -q 10 -t 5 --load
+```
+
+To see the console output, a little bash trick can be used:
+
+```bash
+./run_kits.sh -b tpcc -q 10 -t 5 --load &
+tail -f out?.txt
+```
 
 ## Managing snapshots
 
