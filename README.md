@@ -60,7 +60,8 @@ sudo ./setup_devices.sh
 
 The script `run_kits.sh` is a simple wrapper over the Kits benchmark suite included with Zero.
 It simply invokes it with the given arguments, adding the devices specified in `config.sh` and initialized with `setup_devices.sh` to the command line automatically.
-Furthermore, it saves the standard output in the file `out1.txt` and the error output in `out2.txt`.
+It saves the standard output in the file `out1.txt` and the error output in `out2.txt`.
+Furthermore, it produces resource utilization reports using the Linux tools `mpstat` and `iostat` -- these are saved in the files `mpstat.txt` and `iostat.txt`, respectively.
 
 For documentation on the options that can be passed to Kits, see the [Zero repository](https://github.com/caetanosauer/zero). To load data into empty devices, the `--load` option must be given.
 The following example loads a TPC-C database with scaling factor 10 and 5 loader threads:
@@ -76,7 +77,43 @@ To see the console output, a little bash trick can be used:
 tail -f out?.txt
 ```
 
+To disable saving the output to a file and run the benchmark through the GNU debugger (`gdb`), the argument `--debug` can be given, but it *must* be the first argument in the list:
+
+```bash
+./run_kits.sh --debug -b tpcc -q 10 -t 5 --load
+```
+
 ## Managing snapshots
+
+In order to use a common database snapshot for each experiment, our scripts support saving and loading *snapshots* into a pre-determined folder.
+This is configured in `config.sh` with the variable `SNAPDIR`:
+
+```bash
+SNAPDIR=/mnt/snap
+```
+
+After running a benchmark or just loading benchmark data with `run_kits.sh` a snapshot can be created with `save_snapshot.sh` and loaded at a later point in time (erasing the current database state) with `load_snapshot.sh`.
+Each snapshot has a name, which corresponds to the folder in which the data is stored in `SNAPDIR`.
+To save the data loaded previously in a snapshot named `tpcc-10`, use:
+
+```bash
+./save_snapshot.sh tpcc-10
+```
+
+Then, let's say we run a 60-second benchmark with 5 threads:
+
+```bash
+./run_kits.sh -b tpcc -q 10 -t 5 --duration 60
+```
+
+Now, we erase the data (probably saving the output files `out1.txt` and `out2.txt` for later processing) and run the same benchmark again, now with 2 threads:
+
+```bash
+./load_snapshot.sh tpcc-10
+./run_kits.sh -b tpcc -q 10 -t 5 --duration 60
+```
+
+Snapshots can be saved at any point in time and with an arbitrary name. They work by simply preforming `rsync` operations on the directories (or mountpoints) configured in `config.sh`.
 
 ## Running experiments
 
