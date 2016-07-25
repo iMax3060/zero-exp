@@ -166,4 +166,34 @@ Once the experiment configuration file is saved, say, in `exp_config.sh`, the re
 
 For more examples of experiment configuration scripts, see the sub-directories under the `papers` directory.
 
-## Processing results
+## Collecting experiment data
+
+Every file with `txt` extension produced by the experiment is saved in a "results" directory. This can be defined in the configuration with the `OUTDIR` variable; if none is defined, a directory named `zero-results` is created in the user's home directory.
+
+Within the results directory, a sub-directory with the same name as the experiment configuration script, but without any extension, is created. Within it, yet another sub-directory with the format `repX` is created, where X is a counter incremented for each invocation of the repeat script, starting from the first value of X not found in the directory. For example, if the example above were to be run with the default results directory, all `txt` files would be saved in:
+
+```
+~/zero-results/exp_config/rep1
+```
+
+If executed again, a `rep2` folder would be created. If `rep1` is subsequentially deleted, the next invocations would create `rep1` and then `rep3`.
+
+Within the `repX` folder, one sub-directory is created for each iteration. This directory will finally contain all `txt` files. For example:
+
+```
+~/zero-results/exp_config/rep1/buffer-1GB
+~/zero-results/exp_config/rep1/buffer-5GB
+~/zero-results/exp_config/rep1/buffer-10GB
+```
+
+The output produced by the before-hook is saved in the files  `out1_before.txt` and `out2_before.txt`; the former contains `stdout` output and the latter `stderr`. Similarly, `out1.txt` and `out2.txt` are created for the `run_kits.sh` invocation, and `out1_after.txt` and `out2_after.txt` for the after-hook. Any additional files produced by the user-defined hooks, such as `agglog.txt` in the example above are also saved in the results directory.
+
+If all commands execute successfully (i.e., with return code 0), an empty file called `_SUCCESS` is also created. One additional feature of `repeat.sh` is that the `--run-missing` or `-m` option can be used to automatically iterate over all existing `repX` folders and re-execute any experimen whose folder either does not exist or does not contain a `_SUCCESS` file.
+
+In the example above, one could interrupt the script after the configurations `buffer-1GB` and `buffer-5GB` are executed and later on re-invoke the repeat script with `-m`. In that case, the missing configuration `buffer-10GB` would be executed. Likewise, if `buffer-5GB` produced an error, such that no `_SUCCESS` file is created, it would be retried.
+
+# Generating plots and further processing
+
+We don't provide any generic mechanism to process the generated `txt` files, but the usual approach is to iterate over a `repX` folder and execute `gnuplot` commands on the `txt` files---possibly after pre-processing them with `awk` or another text-processing tool. Examples for such scripts can be found in the `papers` directory.
+
+This is just the approach that we use---any other way of processing the `txt` files can be implemented by the user.
