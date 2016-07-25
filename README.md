@@ -110,11 +110,60 @@ Now, we erase the data (probably saving the output files `out1.txt` and `out2.tx
 
 ```bash
 ./load_snapshot.sh tpcc-10
-./run_kits.sh -b tpcc -q 10 -t 5 --duration 60
+./run_kits.sh -b tpcc -q 10 -t 2 --duration 60
 ```
 
 Snapshots can be saved at any point in time and with an arbitrary name. They work by simply preforming `rsync` operations on the directories (or mountpoints) configured in `config.sh`.
 
 ## Running experiments
+
+The script `repeat.sh` supports iterating over different configuration inputs for the `run_kits.sh` command. It takes a configuration script as argument, which can be used to perform arbitrary pre- and post-processing actions (usually loading or saving a snapshot and processing log files to collect experiment data).
+
+The configurations through which the script iterates are specified in an associative array `CFG`. For example:
+
+```bash
+CFG[buffer-1GB]="--sm_bufpoolsize 1024"
+CFG[buffer-5GB]="--sm_bufpoolsize 5120"
+CFG[buffer-10GB]="--sm_bufpoolsize 10240"
+```
+
+For each element in `CFG`, the `run_kits.sh` command is executed with a base configuration overriden with the arguments specified in that element. To specify the base configuration, a variable `BASE_CFG` must be defined with a path to a configuration file. This can be done in the same script as the `CFG` definition with the `cat` command:
+
+```bash
+BASE_CFG=_baseconfig.conf 
+cat > $BASE_CFG << EOF
+benchmark=tpcc
+threads=10
+queried_sf=10
+duration=60
+EOF
+```
+
+Remember that paths to database and log devices need not be explicitly specified, since the `run_kits.sh` script extracts them from `config.sh`.
+
+To specifiy pre- and post-processing actions, two "hook" functions can be defined: `beforeHook` and `afterHook`. For example:
+
+```bash
+function beforeHook()
+{
+    load_snapshot.sh tpcc-10
+    [ $? -eq 0 ] || return 1;
+}
+
+function afterHook()
+{
+    zapps agglog -l ${MOUNTPOINT[log]}/log -t xct_end > agglog.txt
+}
+```
+
+In this example, the before-hook loads the snapshot called `tpcc-10`; this is done to ensure that each experiment iteration runs on the same initial database. The after-hook uses the `agglog` command of the Zero store manager to extract the number of committed transactions for each second of the experiment by scanning the log. Note that the path to the log is availble in the `MOINTPOINT` array, which is imported automatically by the repeat script.
+
+Once the experiment configuration file is saved, say, in `exp_config.sh`, the repeat script can be invoked with:
+
+```bash
+./repeat.sh exp_config.sh
+```
+
+For more examples of experiment configuration scripts, see the sub-directories under the `papers` directory.
 
 ## Processing results
