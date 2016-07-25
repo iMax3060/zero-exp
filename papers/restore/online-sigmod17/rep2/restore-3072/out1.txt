@@ -1,0 +1,74 @@
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:304:set_pd: DB set to (1)
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:261:set_sf: New Scaling factor: 100.0
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:244:set_qf: New Queried Factor: 100.0
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:979:print_cpus: MaxCPU=(0) - ActiveCPU=(0)
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:778:configure_sm: Configuring Shore...
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:807:start_sm: Starting Shore...
+last_extent: 53
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:1020:conf: ShoreEnv configuration
+[activation_delay] = 0
+[benchmark] = tpcc
+[config] = _baseconfig.conf
+[crashDelay] = -1
+[db-cl-batchsz] = 10
+[db-cl-thinktime] = 0
+[db-config-design] = normal
+[db-loaders] = 10
+[db-worker-queueloops] = 10
+[db-worker-sli] = 0
+[db-workers] = 1
+[dir-trace] = RAT
+[duration] = 120
+[eager] = 1
+[failDelay] = 120
+[load] = 0
+[physical-hacks-enable] = 0
+[queried_sf] = 100
+[records-to-access] = 0
+[select_trx] = 0
+[skew] = 0
+[sm_archdir] = /mnt/archive/archive
+[sm_archiver_block_size] = 1048576
+[sm_archiver_bucket_size] = 128
+[sm_archiver_eager] = 1
+[sm_archiver_workspace_size] = 1024
+[sm_archiving] = 1
+[sm_bufferpool_swizzle] = 0
+[sm_bufpoolsize] = 3072
+[sm_chkpt_interval] = 5
+[sm_cleaner_ignore_metadata] = 1
+[sm_cleaner_workspace_size] = 1024
+[sm_dbfile] = /mnt/db/db
+[sm_errlog] = shoremt.err.log
+[sm_fakeiodelay] = 0
+[sm_fakeiodelay-enable] = 0
+[sm_format] = 0
+[sm_log_delete_old_partitions] = 0
+[sm_log_fetch_buf_partitions] = 0
+[sm_log_max_partitions] = 0
+[sm_log_page_flushers] = 1
+[sm_log_partition_size] = 1024
+[sm_logdir] = /mnt/log/log
+[sm_logging] = 1
+[sm_preventive_chkpt] = 1
+[sm_restore_instant] = 1
+[sm_restore_max_read_size] = 1048576
+[sm_restore_preemptive] = 1
+[sm_restore_reuse_buffer] = 1
+[sm_restore_sched_singlepass] = 1
+[sm_restore_segsize] = 1024
+[sm_shutdown_clean] = 0
+[sm_truncate_log] = 0
+[sm_vol_log_reads] = 1
+[sm_vol_readonly] = 0
+[spread] = 1
+[sys-activecpucount] = 0
+[sys-maxcpucount] = 0
+[threads] = 20
+[trxs] = 0
+[warmup] = 0
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:542:start: ShoreEnv initialized
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:548:start: Starting ()
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/tpcc/tpcc_env.cpp:323:info: SF      = (100.0)
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/tpcc/tpcc_env.cpp:324:info: Workers = (20)
+140182274660096: /home/csauer/hp/zero/src/cmd/kits/kits_cmd.cpp:255:runBenchmarkSpec: begin measurement

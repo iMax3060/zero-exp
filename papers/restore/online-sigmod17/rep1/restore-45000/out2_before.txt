@@ -1,0 +1,2 @@
+rsync: write failed on "/mnt/db/db": No space left on device (28)
+rsync error: error in file IO (code 11) at receiver.c(389) [receiver=3.1.0]

@@ -1,0 +1,63 @@
+Set option db-worker-sli to 0
+Set option eager to 1
+Set option load to 0
+Set option skew to 0
+Set option sm_archiver_eager to 1
+Set option sm_archiving to 1
+Set option sm_bufferpool_swizzle to 0
+Set option sm_cleaner_ignore_metadata to 1
+Set option sm_format to 0
+Set option sm_log_delete_old_partitions to 0
+Set option sm_logging to 1
+Set option sm_restore_instant to 1
+Set option sm_restore_preemptive to 1
+Set option sm_restore_reuse_buffer to 1
+Set option sm_restore_sched_singlepass to 1
+Set option sm_shutdown_clean to 0
+Set option sm_truncate_log to 0
+Set option sm_vol_log_reads to 1
+Set option sm_vol_readonly to 0
+Set option spread to 1
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (247) [0.002] Initializing lock manager
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (254) [140.944] Initializing log manager (part 1)
+Initialized curr_lsn to 17.438512568
+Log _start 438512568 end_byte() 438512568
+Log _curr_lsn 17.438512568 _durable_lsn 17.438512568
+Curr epoch  base_lsn 17.402653184  base 402653184  start 35859384  end 35859384
+Old epoch  base_lsn 0.0  base 0  start 0  end 0
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (261) [3.654] Initializing log manager (part 2)
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (273) [0.09] Initializing log archiver
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (282) [1351.57] Initializing restart manager
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/restart.cpp (136) Log analysis found 0 dirty pages and 0 active transactions
+ACTIVE TRANSACTIONS
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (292) [6.576] Initializing volume manager
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (299) [0.055] Initializing buffer manager
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (306) [17.255] Building volume manager caches
+STNODE CACHE:
+stid: 1 root: 2
+stid: 2 root: 3
+stid: 3 root: 4
+stid: 4 root: 5
+stid: 5 root: 6
+stid: 6 root: 7
+stid: 7 root: 8
+stid: 8 root: 9
+stid: 9 root: 10
+stid: 10 root: 11
+stid: 11 root: 12
+stid: 12 root: 13
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (321) [5348.01] Initializing buffer cleaner and other services
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (340) [1.028] Performing offline recovery
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (372) [0.052] Finished SM initialization
+[7f83d5ffd700] /home/csauer/hp/zero/src/sm/restart.cpp (394) Finished concurrent REDO of 0 pages
+[7f830cff9700] /home/csauer/hp/zero/src/sm/restore.cpp (722) Restore waiting for log archiver to reach LSN 17.451735872
+[7f830cff9700] /home/csauer/hp/zero/src/sm/restore.cpp (739) Log archiver finished in 0.113326 seconds
+[7f830d7fa700] /home/csauer/hp/zero/src/sm/bf_tree.cpp (1071) Finished warmup! Pages fixed: 262171 of 262144 with DB size 1766371
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (409) Terminating recovery manager
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (446) SM performing dirty shutdown
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (455) Terminating other services
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (461) Terminating log archiver
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (474) Terminating buffer manager
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (483) Terminating volume
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (491) Terminating log manager
+[7f86c51f5700] /home/csauer/hp/zero/src/sm/sm.cpp (505) SM shutdown complete!

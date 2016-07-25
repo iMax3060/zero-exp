@@ -1,0 +1,6 @@
+139750287562496: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:304:set_pd: DB set to (1)
+139750287562496: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:261:set_sf: New Scaling factor: 750.0
+139750287562496: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:244:set_qf: New Queried Factor: 750.0
+139750287562496: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:979:print_cpus: MaxCPU=(0) - ActiveCPU=(0)
+139750287562496: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:778:configure_sm: Configuring Shore...
+139750287562496: /home/csauer/hp/zero/src/cmd/kits/shore_env.cpp:807:start_sm: Starting Shore...
