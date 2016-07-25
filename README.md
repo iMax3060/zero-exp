@@ -1,11 +1,13 @@
 # zero-exp
 A collection of scripts to run experiments with the [Zero storage manager](https://github.com/caetanosauer/zero).
 
-This repository also includes repeatability information and experiment data for papers we published with Zero.
+This repository also includes repeatability information and experiment data for papers we published with Zero (see the `papers` directory).
+
+**WARNING:** These scripts create and delete files on your filesystem and even format additional filesystems. While some safeguards are implemented to avoid, e.g., formatting the root filesystem by mistake, we cannot cover all of such scenarios. Therefore, we strongly advise to backup all your data and, if possible, use a separate user account with restricted privileges instead of your normal user account.
 
 ## Overview
 
-The scripts in this repository assist in the execution of experiments by managing common configuration and base data, supporting automatic execution of Zero commands with varying arguments, and saving results in a organized folder structure.
+The scripts in this repository assist in the execution of experiments by managing common configuration and base data, supporting automatic execution of Zero commands with varying arguments, and saving results in an organized folder structure.
 The repository also includes tools that process the generated data to produce plots and diagrams used in some of the papers we published.
 This README focuses solely on the former scripts -- for details about how to reproduce the actual experiments in our papers, see the sub-folders.
 
