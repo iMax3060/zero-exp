@@ -27,9 +27,11 @@ for d in "${!DEVS[@]}"; do
         sourcedir=$sourcedir/new
     fi
 
-    echo "Copying $d to $TARGET"
+    echo "Copying $d from $sourcedir to $TARGET"
     mkdir -p $TARGET
-    rsync -aq --copy-links --delete $sourcedir/$d $TARGET
+    if [ -e $sourcedir/$d ]; then
+        rsync -aq --copy-links --delete $sourcedir/$d $TARGET
+    fi
 done
 
 # Copy special output files

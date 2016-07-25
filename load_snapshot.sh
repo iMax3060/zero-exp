@@ -35,7 +35,17 @@ for d in "${!DEVS[@]}"; do
         ln -fs $targetdir/new/$d $targetdir/$d
     else
         echo -n "Copying $d ... "
-        rsync -a --delete $SOURCE/$d $targetdir/
-        echo "OK"
+        if [ -e $SOURCE/$d ]; then
+            rsync -a --delete --inplace $SOURCE/$d $targetdir/
+            echo "OK"
+        else
+            if [ -d $targetdir/$d ]; then
+                rm -rf $targetdir/$d/*
+            # not deleting db and backup because it's not really required in any practical scenario
+            # else
+                # rm -rf $targetdir/$d
+            fi
+            echo "NOT FOUND"
+        fi
     fi
 done

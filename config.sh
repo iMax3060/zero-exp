@@ -8,7 +8,7 @@ declare -A USE_BTRFS
 DEVS[log]=/dev/sda1
 DEVS[archive]=/dev/sdg1
 DEVS[db]=/dev/sdh1
-# DEVS[backup]=/dev/sdi1
+DEVS[backup]=/dev/sdi1
 
 # HDDs
 # DEVS[log]=/dev/sdf1
@@ -16,6 +16,7 @@ DEVS[db]=/dev/sdh1
 # DEVS[db]=/dev/sdd1
 # DEVS[backup]=/dev/sde1
 
+# MOUNTPOINT[log]=/dev/shm/log
 MOUNTPOINT[log]=/mnt/log
 MOUNTPOINT[archive]=/mnt/archive
 MOUNTPOINT[db]=/mnt/db
@@ -31,9 +32,3 @@ USE_BTRFS[backup]=false
 SNAPDIR=/mnt/snap
 
 MOUNTOPTS="noatime,noexec,noauto,nodev,nosuid"
-
-# Options passed to zero/kits by default
-MAX_THREADS=24
-WORKSPACE=20000
-BUFSIZE=90000
-LOGSIZE=80000

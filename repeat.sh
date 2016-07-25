@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RUN_CMD=./run_kits.sh
+RUN_CMD="./run_kits.sh"
 
 function die() { echo >&2 "$@"; exit 1; }
 
@@ -50,7 +50,7 @@ EOF
 OPTSPEC=`getopt -o i:,o:,m --long iterations:,outdir:,help,run-missing \
     -n 'repeat.sh' -- "$@"`
 
-if [ $? != 0 ] ; then usage ; fi
+if [ $? != 0 ] ; then usage; exit 1; fi
 
 # Note the quotes around `$OPTSPEC': they are essential!
 eval set -- "$OPTSPEC"
@@ -130,6 +130,8 @@ function runOnce()
             return $RC
         fi
     fi
+
+    rm -f $BASE_CFG
 
     # Finally, if everything worked fine, produce sucessful result
     echo "OK"
