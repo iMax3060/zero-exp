@@ -48,6 +48,7 @@ EXIT_CODE=0
 
 if $RUN_GDB; then
     gdb -ex run --args $CMD
+    # valgrind --tool=massif --threshold=0.01 $CMD
 else
     $CMD 1> out1.txt 2> out2.txt
     EXIT_CODE=$?

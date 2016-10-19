@@ -1,6 +1,7 @@
 #!/bin/bash
 
 RUN_CMD="./run_kits.sh"
+# RUN_CMD="./run_kits.sh --debug"
 
 function die() { echo >&2 "$@"; exit 1; }
 
@@ -131,8 +132,6 @@ function runOnce()
         fi
     fi
 
-    rm -f $BASE_CFG
-
     # Finally, if everything worked fine, produce sucessful result
     echo "OK"
     return 0
@@ -149,10 +148,13 @@ if (($RUN_MISSING)); then
             RC=$?
             mkdir -p $r/$v
             mv *.txt $r/$v/
+            cp $BASE_CFG $REPDIR/$v/
 
             # one single run failure causes repeat script to fail too
             if [[ $RC != 0 ]]; then
                 exit $RC
+            else
+                touch $REPDIR/$v/_SUCCESS
             fi
         done
     done
@@ -166,6 +168,7 @@ else
 
             mkdir -p $REPDIR/$v
             mv *.txt $REPDIR/$v/
+            cp $BASE_CFG $REPDIR/$v/
             if [[ $RC == 0 ]]; then
                 touch $REPDIR/$v/_SUCCESS
             fi

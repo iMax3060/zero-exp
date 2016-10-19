@@ -6,13 +6,27 @@ SF=750
 
 declare -A CFG
 
-CFG["restore-5000"]=" --sm_bufpoolsize=5000"
-# CFG["restore-25000"]=" --sm_bufpoolsize=25000"
-# CFG["restore-30000"]=" --sm_bufpoolsize=30000"
-# CFG["restore-35000"]=" --sm_bufpoolsize=35000"
-# CFG["restore-40000"]=" --sm_bufpoolsize=40000"
+CFG["restore-5000"]=" --sm_bufpoolsize=10000"
+CFG["restore-10000"]=" --sm_bufpoolsize=10000"
+CFG["restore-15000"]=" --sm_bufpoolsize=10000"
+CFG["restore-20000"]=" --sm_bufpoolsize=10000"
+CFG["restore-25000"]=" --sm_bufpoolsize=25000"
+CFG["restore-30000"]=" --sm_bufpoolsize=30000"
+CFG["restore-35000"]=" --sm_bufpoolsize=35000"
+CFG["restore-40000"]=" --sm_bufpoolsize=40000"
 # CFG["restore-45000"]=" --sm_bufpoolsize=45000"
 # CFG["restore-50000"]=" --sm_bufpoolsize=50000"
+# CFG["restore-60000"]=" --sm_bufpoolsize=60000"
+# CFG["restore-60000-3"]=" --sm_bufpoolsize=60000"
+# CFG["restore-60000-4"]=" --sm_bufpoolsize=60000"
+
+# SF=375
+# CFG["restore-5000"]=" --sm_bufpoolsize=5000"
+# CFG["restore-10000"]=" --sm_bufpoolsize=10000"
+# CFG["restore-15000"]=" --sm_bufpoolsize=15000"
+# CFG["restore-20000"]=" --sm_bufpoolsize=20000"
+# CFG["restore-25000"]=" --sm_bufpoolsize=25000"
+# CFG["restore-30000"]=" --sm_bufpoolsize=30000"
 
 # BASE CONFIGURATION
 BASE_CFG=_baseconfig.conf 
@@ -21,17 +35,20 @@ benchmark=tpcc
 threads=20
 queried_sf=$SF
 duration=600
-failDelay=600
-sm_restore_sched_singlepass=true
+failDelay=1200
+warmup=0
+sm_restore_sched_ondemand=true
 sm_restore_segsize=4096
 sm_restore_reuse_buffer=true
 sm_restore_max_read_size=1048576
 sm_restore_preemptive=true
 sm_restore_instant=true
-warmup=1
+sm_restore_threads=4
+sm_backup_async_write=true
 sm_vol_readonly=false
 sm_vol_log_reads=true
 sm_vol_o_direct=true
+sm_cleaner_decoupled=false
 sm_cleaner_workspace_size=1024
 sm_cleaner_ignore_metadata=true
 sm_cleaner_interval=5000
@@ -40,7 +57,7 @@ sm_log_delete_old_partitions=false
 sm_shutdown_clean=false
 sm_archiving=true
 sm_archiver_eager=true
-sm_archiver_workspace_size=1024
+sm_archiver_workspace_size=2048
 sm_bufferpool_swizzle=false
 EOF
 
@@ -95,4 +112,5 @@ function afterHook()
         > agglog.txt
 
     zapps xctlatency -l ${MOUNTPOINT[log]}/log > xctlatency.txt
+    zapps tracerestore -l ${MOUNTPOINT[log]}/log > tracerestore.txt
 }
