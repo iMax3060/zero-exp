@@ -147,15 +147,17 @@ for d in $EXPDIR/restore-*; do
          END { printf("%s %.2f\n", title, (sum/cnt)*segsize*8/1024) }' \
         >> $EXPDIR/bandwidth.txt
 
-    # cat $DIR/iostat.txt |
-    # awk -v arch=$ARCH_DEV -v db=$DB_DEV -v backup=$BACKUP_DEV \
-    #     'BEGIN { track = 0; }
-    #      { if (track == 4) { print a, b, c, d; track = 0 } }
-    #      $1 == arch { a = $6; track++ }
-    #      $1 == backup { b = $6; track++ }
-    #      $1 == db { c = $7; track++}
-    #      $1 == db { d = $6; track++}' \
-    #     > $DIR/iostat_dev.txt
+    if [ -f $DIR/iostat.txt ]; then
+        cat $DIR/iostat.txt |
+        awk -v arch=$ARCH_DEV -v db=$DB_DEV -v backup=$BACKUP_DEV \
+            'BEGIN { track = 0; }
+             { if (track == 4) { print a, b, c, d; track = 0 } }
+             $1 == arch { a = $6; track++ }
+             $1 == backup { b = $6; track++ }
+             $1 == db { c = $7; track++}
+             $1 == db { d = $6; track++}' \
+            > $DIR/iostat_dev.txt
+    fi
 
     awk -v v=$BUFSIZE '{ sum += $8 } END { print v,(sum > 0 ? sum : 0) }' \
         $DIR/agglog_smooth.txt >> $EXPDIR/losses.txt
@@ -244,14 +246,14 @@ for d in $EXPDIR/restore-*; do
     gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE";" \
         tput_accum.gp
 
-    # gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE"" \
-    #     iostat.gp
+    gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE"" \
+        iostat.gp
 
     pdfcompile tput_"$BUFSIZE"
     pdfcompile bandwidth_"$BUFSIZE"
     pdfcompile accum_"$BUFSIZE"
     pdfcompile tracerestore_"$BUFSIZE"
-    # pdfcompile iostat_"$BUFSIZE"
+    pdfcompile iostat_"$BUFSIZE"
 done
 
 for s in $STATS; do
