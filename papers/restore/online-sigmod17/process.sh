@@ -151,7 +151,7 @@ for d in $EXPDIR/restore-*; do
     # awk -v arch=$ARCH_DEV -v db=$DB_DEV -v backup=$BACKUP_DEV \
     #     'BEGIN { track = 0; }
     #      { if (track == 4) { print a, b, c, d; track = 0 } }
-    #      $1 == arch { a = $7; track++ }
+    #      $1 == arch { a = $6; track++ }
     #      $1 == backup { b = $6; track++ }
     #      $1 == db { c = $7; track++}
     #      $1 == db { d = $6; track++}' \
