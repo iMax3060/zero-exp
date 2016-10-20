@@ -34,11 +34,14 @@ for s in $TSERIES; do
 done
 rm -f pdflatex.txt
 
+COUNT=0
+
 for d in $EXPDIR/restore-*; do
     d=$(basename $d)
     BUFSIZE=${d#restore-}
     BUFSIZE=$((BUFSIZE / 1000))
     DIR=$EXPDIR/$d
+    COUNT=$((COUNT + 1))
 
     # expected columns of agglog.txt:
     # xct_end restore_begin restore_segment restore_end page_write page_read 
@@ -252,31 +255,33 @@ for s in $STATS; do
     mv tmp.txt $EXPDIR/$s.txt
 done
 
-gnuplot -e "dir='"$EXPDIR"'" losses.gp
-gnuplot -e "dir='"$EXPDIR"'" bandwidth.gp
+if [ $COUNT -gt 1 ]; then
+    gnuplot -e "dir='"$EXPDIR"'" losses.gp
+    gnuplot -e "dir='"$EXPDIR"'" bandwidth.gp
 
-# Replace empty columns with ?, so that gnuplot processes them correctly
-sed -i -e 's/\t\t/\t?\t/g' -e 's/\t\t/\t?\t/g' -e 's/^\t/?\t/g' $EXPDIR/xctlatency.txt
-sed -i -e 's/\t\t/\t?\t/g' -e 's/\t\t/\t?\t/g' -e 's/^\t/?\t/g' $EXPDIR/bandwidth_lines.txt
+    # Replace empty columns with ?, so that gnuplot processes them correctly
+    sed -i -e 's/\t\t/\t?\t/g' -e 's/\t\t/\t?\t/g' -e 's/^\t/?\t/g' $EXPDIR/xctlatency.txt
+    sed -i -e 's/\t\t/\t?\t/g' -e 's/\t\t/\t?\t/g' -e 's/^\t/?\t/g' $EXPDIR/bandwidth_lines.txt
 
-NCOLUMNS=$(awk 'NR==2 {print NF}' $EXPDIR/xctlatency.txt)
-echo NCOLUMNS=$NCOLUMNS
-gnuplot -e "dir='"$EXPDIR"'; ncolumns="$NCOLUMNS";" xctlatency.gp
-gnuplot -e "dir='"$EXPDIR"'; ncolumns="$NCOLUMNS";" xctlatency_distr.gp
-gnuplot -e "dir='"$EXPDIR"'; ncolumns="$NCOLUMNS";" bandwidth_lines.gp
+    NCOLUMNS=$(awk 'NR==2 {print NF}' $EXPDIR/xctlatency.txt)
+    echo NCOLUMNS=$NCOLUMNS
+    gnuplot -e "dir='"$EXPDIR"'; ncolumns="$NCOLUMNS";" xctlatency.gp
+    gnuplot -e "dir='"$EXPDIR"'; ncolumns="$NCOLUMNS";" xctlatency_distr.gp
+    gnuplot -e "dir='"$EXPDIR"'; ncolumns="$NCOLUMNS";" bandwidth_lines.gp
 
-pdfcompile losses
-pdfcompile bandwidth
-pdfcompile xctlatency
-pdfcompile xctlatency_distr
-pdfcompile bandwidth_lines
-pdfcompile key
+    pdfcompile losses
+    pdfcompile bandwidth
+    pdfcompile xctlatency
+    pdfcompile xctlatency_distr
+    pdfcompile bandwidth_lines
+    pdfcompile key
 
-pdfcrop key.pdf key.pdf > /dev/null
+    pdfcrop key.pdf key.pdf > /dev/null
 
-rm -f *.aux *.log *-inc.pdf *.tex
-pdfunite tput_*.pdf bandwidth_*.pdf \
-    losses.pdf bandwidth.pdf xctlatency.pdf xctlatency_distr.pdf tput_all.pdf 1> /dev/null 2>&1
+    rm -f *.aux *.log *-inc.pdf *.tex
+    pdfunite tput_*.pdf bandwidth_*.pdf \
+        losses.pdf bandwidth.pdf xctlatency.pdf xctlatency_distr.pdf tput_all.pdf 1> /dev/null 2>&1
+fi
 
 mv *.pdf $EXPDIR/
 mv *.txt $EXPDIR/
