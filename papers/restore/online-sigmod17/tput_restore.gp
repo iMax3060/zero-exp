@@ -7,7 +7,7 @@ set style line 1 lc rgb '#8b1a0e' lt 1 lw 3 pt 7 ps 1 #red
 set style line 2 lc rgb '#0c119c' lt 1 lw 1 pt 6 ps 1 #blue
 set style line 3 lc rgb '#5e9c36' lt 1 lw 1 pt 13 ps 1 #green
 set style line 4 lc rgb '#5e9c36' lt 2 lw 8 pt 13 ps 1
-set style line 5 lc rgb '#1faede' lt 1 lw 1 pt 6 ps 1 #blue
+set style line 5 lc rgb '#1faede' lt 1 lw 3 pt 6 ps 1 #blue
 set style fill transparent solid 0.2 border
 
 set lmargin 8
