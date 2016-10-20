@@ -1,0 +1,2 @@
+rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(632) [sender=3.1.0]
+rsync: [sender] write error: Broken pipe (32)

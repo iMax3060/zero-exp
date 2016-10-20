@@ -1,0 +1,15 @@
+Scanning log file /mnt/log/log/log.13
+Scanning log file /mnt/log/log/log.14
+Scanning log file /mnt/log/log/log.15
+Scanning log file /mnt/log/log/log.16
+Scanning log file /mnt/log/log/log.17
+Scanning log file /mnt/log/log/log.18
+Scanning log file /mnt/log/log/log.19
+papers/restore/restore_online.sh: line 88: 22597 Killed                  startTrimLoop
+Scanning log file /mnt/log/log/log.13
+Scanning log file /mnt/log/log/log.14
+Scanning log file /mnt/log/log/log.15
+Scanning log file /mnt/log/log/log.16
+Scanning log file /mnt/log/log/log.17
+Scanning log file /mnt/log/log/log.18
+Scanning log file /mnt/log/log/log.19

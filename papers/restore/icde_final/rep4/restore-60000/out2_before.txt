@@ -1,0 +1,5 @@
+Initialized curr_lsn to 220.776
+Log _start 776 end_byte() 776
+Log _curr_lsn 220.776 _durable_lsn 220.776
+Curr epoch  base_lsn 220.0  base 0  start 776  end 776
+Old epoch  base_lsn 0.0  base 0  start 0  end 0

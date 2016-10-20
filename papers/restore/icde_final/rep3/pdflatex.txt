@@ -1,0 +1,43 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./accum_60.tex
+LaTeX2e <2016/02/01>
+Babel <3.9n> and hyphenation patterns for 80 languages loaded.
+(/opt/texlive/2016/texmf-dist/tex/latex/base/minimal.cls
+Document Class: minimal 2001/05/25 Standard LaTeX minimal class
+) (/opt/texlive/2016/texmf-dist/tex/latex/extsizes/size9.clo)
+(/opt/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+(/opt/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty)
+(/opt/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+(/opt/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty)
+(/opt/texlive/2016/texmf-dist/tex/latex/latexconfig/graphics.cfg)
+(/opt/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty))))
+(/opt/texlive/2016/texmf-dist/tex/latex/graphics/color.sty
+(/opt/texlive/2016/texmf-dist/tex/latex/latexconfig/color.cfg))
+(/opt/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty)
+(/opt/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty))
+No configuration file gnuplot.cfg found.
+(./accum_60.aux) (/opt/texlive/2016/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty))
+(/opt/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/opt/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty))
+(/opt/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/opt/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty)))
+(/opt/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* detected driver: pdftex
+<accum_60-inc.pdf, id=1, 240.9pt x 141.52875pt> <use accum_60-inc.pdf> [1{/opt/
+texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./accum_60-inc.pdf>
+] (./accum_60.aux) )</opt/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></opt/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pf
+b>
+Output written on accum_60.pdf (1 page, 33894 bytes).
+Transcript written on accum_60.log.

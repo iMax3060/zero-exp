@@ -1,0 +1,7 @@
+Loading snapshot ... Copying db ... OK
+Copying log ... OK
+Copying backup ... OK
+Copying archive ... OK
+OK
+Copying backup ... OK
+Adding backup file ... OK

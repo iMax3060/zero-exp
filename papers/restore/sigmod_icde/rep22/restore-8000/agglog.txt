@@ -1,0 +1,7 @@
+# xct_end restore_begin restore_segment restore_end page_write page_read
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
