@@ -239,6 +239,9 @@ for d in $EXPDIR/restore-*; do
         bandwidth_restore.gp
 
     gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE";" \
+        tracerestore.gp
+
+    gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE";" \
         tput_accum.gp
 
     # gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE"" \
@@ -247,6 +250,7 @@ for d in $EXPDIR/restore-*; do
     pdfcompile tput_"$BUFSIZE"
     pdfcompile bandwidth_"$BUFSIZE"
     pdfcompile accum_"$BUFSIZE"
+    pdfcompile tracerestore_"$BUFSIZE"
     # pdfcompile iostat_"$BUFSIZE"
 done
 
