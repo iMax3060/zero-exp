@@ -162,7 +162,7 @@ function formatDevice
         createBTRFS $devpath "-f" $FORCE
         sudo -n mount -o "$MOUNTOPTS,user_subvol_rm_allowed" $devpath $mountpath
     else
-        createFS $devpath "-t ext3 -O ^has_journal -q" $FORCE
+        createFS $devpath "-t ext4 -O ^has_journal -q" $FORCE
         sudo -n mount -o $MOUNTOPTS $devpath $mountpath
     fi
 
