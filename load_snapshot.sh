@@ -13,7 +13,7 @@ SOURCE=$SNAPDIR/$SNAPID
 
 set -e
 
-for d in "${!DEVS[@]}"; do
+for d in "${!MOUNTPOINT[@]}"; do
     targetdir=${MOUNTPOINT[$d]}
     use_btrfs=${USE_BTRFS[$d]}
 

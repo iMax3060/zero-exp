@@ -148,13 +148,13 @@ if (($RUN_MISSING)); then
             RC=$?
             mkdir -p $r/$v
             mv *.txt $r/$v/
-            cp $BASE_CFG $REPDIR/$v/
+            cp $BASE_CFG $r/$v/
 
             # one single run failure causes repeat script to fail too
             if [[ $RC != 0 ]]; then
                 exit $RC
             else
-                touch $REPDIR/$v/_SUCCESS
+                touch $r/$v/_SUCCESS
             fi
         done
     done
