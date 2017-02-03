@@ -33,9 +33,9 @@ rm -f pdflatex.txt
 
 COUNT=0
 
-for d in $EXPDIR/db-*; do
+for d in $EXPDIR/nodb-*; do
     d=$(basename $d)
-    BUFSIZE=${d#db-}
+    BUFSIZE=${d#nodb-}
     DIR=$EXPDIR/$d
     COUNT=$((COUNT + 1))
 
