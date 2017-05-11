@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RUN_CMD="./run_kits.sh"
-# RUN_CMD="./run_kits.sh --debug"
+RUN_CMD="./run_kits.sh --debug"
 
 function die() { echo >&2 "$@"; exit 1; }
 

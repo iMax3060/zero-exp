@@ -47,6 +47,7 @@ CMD="zapps kits $KITS_OPTS $*"
 EXIT_CODE=0
 
 if $RUN_GDB; then
+    # perf record -e cpu-clock -g --call-graph dwarf -F 97 $CMD
     gdb -ex run --args $CMD
     # valgrind --tool=massif --threshold=0.01 $CMD
 else

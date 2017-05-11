@@ -36,7 +36,8 @@ for d in "${!MOUNTPOINT[@]}"; do
     else
         echo -n "Copying $d ... "
         if [ -e $SOURCE/$d ]; then
-            rsync -a --delete --inplace $SOURCE/$d $targetdir/
+            # -a is equivalent to -rlptgoD, but we dont want to copy symlinks (-L instead of -l)
+            rsync -rptgoDL --delete --inplace $SOURCE/$d $targetdir/
             echo "OK"
         else
             if [ -d $targetdir/$d ]; then
