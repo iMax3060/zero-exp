@@ -2,20 +2,15 @@
 
 source config.sh || (echo "config.sh not found!"; exit)
 
-SF=750
-THREADS=20
+SF=75
+THREADS=8
 
 declare -A CFG
 
-CFG["buffersizes-2500"]=" --sm_bufpoolsize=2500"
-CFG["buffersizes-5000"]=" --sm_bufpoolsize=5000"
-CFG["buffersizes-7500"]=" --sm_bufpoolsize=7500"
-CFG["buffersizes-10000"]=" --sm_bufpoolsize=10000"
-CFG["buffersizes-12500"]=" --sm_bufpoolsize=12500"
-CFG["buffersizes-15000"]=" --sm_bufpoolsize=15000"
-# CFG["buffersizes-20000"]=" --sm_bufpoolsize=20000"
-# CFG["buffersizes-25000"]=" --sm_bufpoolsize=25000"
-# CFG["buffersizes-30000"]=" --sm_bufpoolsize=30000"
+CFG["buffersizes-500"]=" --sm_bufpoolsize=500"
+CFG["buffersizes-1000"]=" --sm_bufpoolsize=1000"
+CFG["buffersizes-2000"]=" --sm_bufpoolsize=2000"
+CFG["buffersizes-4000"]=" --sm_bufpoolsize=4000"
 
 # BASE CONFIGURATION
 BASE_CFG=_baseconfig.conf 
@@ -23,19 +18,19 @@ cat > $BASE_CFG << EOF
 benchmark=tpcc
 queried_sf=$SF
 threads=$THREADS
-duration=1200
+duration=300
 asyncCommit=true
+sm_log_benchmark_start=true
 sm_vol_o_direct=true
-sm_cleaner_interval=0
+sm_vol_cluster_stores=true
+sm_cleaner_interval=-1
 sm_chkpt_interval=5000
-sm_log_delete_old_partitions=false
-sm_vol_log_reads=true
 sm_shutdown_clean=false
-sm_bufferpool_swizzle=true
+sm_bufferpool_swizzle=false
 sm_archiving=false
 sm_truncate_log=false
 sm_no_db=false
-sm_write_elision=true
+sm_write_elision=false
 EOF
 
 function startTrimLoop()
@@ -62,7 +57,6 @@ function afterHook()
 {
     kill -9 $TRIMPID > /dev/null 2>&1
     zapps agglog -l ${MOUNTPOINT[log]}/log \
-        -b benchmark_start \
         -t xct_end \
         > agglog.txt
 
