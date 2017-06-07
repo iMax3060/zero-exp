@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RUN_CMD="./run_kits.sh"
-RUN_CMD="./run_kits.sh --debug"
+# RUN_CMD="./run_kits.sh --debug"
 
 function die() { echo >&2 "$@"; exit 1; }
 
@@ -96,12 +96,13 @@ source $EXP_SOURCE
 function runOnce()
 {
     local config=$1
+    local iter=${2:-0}
 
     echo -n "Running config $config ... "
 
     # execute before hook
     if functionExists beforeHook; then
-        beforeHook 1> out1_before.txt 2> out2_before.txt
+        beforeHook $iter 1> out1_before.txt 2> out2_before.txt
         RC=$?
         if [ $RC -ne 0 ]; then
             echo "ERROR on before hook!"
@@ -163,7 +164,7 @@ else
         echo "==== Iteration $j of $ITERATIONS ===="
         REPDIR=$(findFirstFree $OUTDIR/rep)
         for v in ${!CFG[@]}; do
-            runOnce $v
+            runOnce $v $j
             RC=$?
 
             mkdir -p $REPDIR/$v

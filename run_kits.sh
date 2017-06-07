@@ -49,6 +49,7 @@ EXIT_CODE=0
 if $RUN_GDB; then
     # perf record -e cpu-clock -g --call-graph dwarf -F 97 $CMD
     gdb -ex run --args $CMD
+    # strace $CMD
     # valgrind --tool=massif --threshold=0.01 $CMD
 else
     $CMD 1> out1.txt 2> out2.txt
