@@ -45,13 +45,13 @@ rm -f $EXPDIR/la_overhead_1.txt
 rm -f $EXPDIR/la_overhead_2.txt
 rm -f $EXPDIR/cpu_util_1.txt
 
-awk "$AWK_MPSTAT" $EXPDIR/Copy+SSD/mpstat.txt > $EXPDIR/Copy+SSD/mpstat_proc.txt
-awk "$AWK_MPSTAT" $EXPDIR/Sort+SSD/mpstat.txt > $EXPDIR/Sort+SSD/mpstat_proc.txt
+awk "$AWK_MPSTAT" $EXPDIR/without/mpstat.txt > $EXPDIR/without/mpstat_proc.txt
+awk "$AWK_MPSTAT" $EXPDIR/with/mpstat.txt > $EXPDIR/with/mpstat_proc.txt
 
-awk -v expname="Copy" "$AWK_SCRIPT" $EXPDIR/Copy+SSD/agglog.txt >> $EXPDIR/la_overhead_1.txt
-awk -v expname="Sort" "$AWK_SCRIPT" $EXPDIR/Sort+SSD/agglog.txt >> $EXPDIR/la_overhead_1.txt
-awk -v expname="Copy" "$AWK_SCRIPT" $EXPDIR/Copy+SSD/mpstat_proc.txt >> $EXPDIR/cpu_util_1.txt
-awk -v expname="Sort" "$AWK_SCRIPT" $EXPDIR/Sort+SSD/mpstat_proc.txt >> $EXPDIR/cpu_util_1.txt
+awk -v expname="Copy" "$AWK_SCRIPT" $EXPDIR/without/agglog.txt >> $EXPDIR/la_overhead_1.txt
+awk -v expname="Sort" "$AWK_SCRIPT" $EXPDIR/with/agglog.txt >> $EXPDIR/la_overhead_1.txt
+awk -v expname="Copy" "$AWK_SCRIPT" $EXPDIR/without/mpstat_proc.txt >> $EXPDIR/cpu_util_1.txt
+awk -v expname="Sort" "$AWK_SCRIPT" $EXPDIR/with/mpstat_proc.txt >> $EXPDIR/cpu_util_1.txt
 # awk -v expname="Copy" "$AWK_SCRIPT" $EXPDIR/Copy+RAM/agglog.txt >> $EXPDIR/la_overhead_2.txt
 # awk -v expname="Sort" "$AWK_SCRIPT" $EXPDIR/Sort+RAM/agglog.txt >> $EXPDIR/la_overhead_2.txt
 

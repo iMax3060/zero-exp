@@ -34,7 +34,7 @@ unset key
 set xtics nomirror 0,5
 set xlabel "Time (min)"
 
-set yrange [0:ymax]
+# set yrange [0:ymax]
 set ytics nomirror
 set ylabel "Transaction throughput (ktps)"
 unset mytics

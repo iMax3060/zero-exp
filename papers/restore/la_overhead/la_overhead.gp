@@ -12,8 +12,8 @@ set style line 3 lc rgb '#5e9c36' lt 1 lw 2 pt 13 ps 1 #green
 set style line 4 lc rgb '#303030' lt 1 lw 3 pt 13 ps 1 #darkgrey
 set style fill transparent solid 0.5 border
 
-set lmargin 9
-set rmargin 1
+# set lmargin 9
+# set rmargin 1
 
 set multiplot layout 1,2
 
@@ -28,6 +28,7 @@ set boxwidth 0.5
 set style data candlesticks 
 unset mytics
 set ylabel "Throughput (ktps)"
+set mytics 4
 #set logscale y
 #set ytics 1,2
 #set yrange [2:16]
@@ -44,6 +45,7 @@ set lmargin 7
 #set yrange [8:70]
 #set title "DRAM"
 set ylabel "CPU utilization (\\%)"
+set mytics 4
 
 plot dir."/cpu_util_1.txt" using (column(0)):3:2:6:5:xtic(1) ls 4 notitle whiskerbars, \
     "" using (column(0)):4:4:4:4:xtic(1) with candlesticks ls 1 notitle

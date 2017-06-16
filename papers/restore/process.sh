@@ -22,7 +22,7 @@ TSERIES="xctlatency xctlatency_distr bandwidth_lines"
 SEGSIZE=4096
 
 # Size of window when applying moving average
-MAVG_WINDOW=20
+MAVG_WINDOW=5
 # How many seconds before failure to use in avg. pre-failure throughput calculation
 PRE_FAILURE_WINDOW=60
 
