@@ -1,4 +1,0 @@
-SEQ 199 normal-hdd-prefetch1//restore-seq/agglog.txt
-2048 596 normal-hdd-prefetch1//restore-2048/agglog.txt
-4096 388 normal-hdd-prefetch1//restore-4096/agglog.txt
-8192 372 normal-hdd-prefetch1//restore-8192/agglog.txt

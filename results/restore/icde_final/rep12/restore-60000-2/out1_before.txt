@@ -1,7 +1,0 @@
-Loading snapshot ... Copying db ... OK
-Copying log ... OK
-Copying backup ... NOT FOUND
-Copying archive ... OK
-OK
-Copying backup ... OK
-Adding backup file ... OK

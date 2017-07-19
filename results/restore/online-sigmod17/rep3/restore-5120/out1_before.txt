@@ -1,4 +1,0 @@
-Copying db ... OK
-Copying log ... OK
-Copying backup ... NOT FOUND
-Copying archive ... OK

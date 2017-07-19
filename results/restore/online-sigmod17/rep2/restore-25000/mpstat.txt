@@ -1,4 +1,0 @@
-Linux 3.13.0-68-generic (ds-server2) 	07/20/2016 	_x86_64_	(24 CPU)
-
-01:16:18 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
-01:16:19 PM  all    0.63    0.00    2.72    6.02    0.00    0.00    0.00    0.00    0.00   90.63

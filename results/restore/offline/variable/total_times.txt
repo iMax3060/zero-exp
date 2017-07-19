@@ -1,9 +1,0 @@
-SEQ 117 restore-seq/agglog.txt
-128 3058 restore-128/agglog.txt
-256 1562 restore-256/agglog.txt
-512 819 restore-512/agglog.txt
-1024 451 restore-1024/agglog.txt
-2048 266 restore-2048/agglog.txt
-4096 170 restore-4096/agglog.txt
-8192 122 restore-8192/agglog.txt
-16384 97 restore-16384/agglog.txt

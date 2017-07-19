@@ -1,3 +1,0 @@
-Scanning log file /mnt/log/log/log.220
-papers/restore/restore_online.sh: line 94: 26392 Killed                  startTrimLoop
-Scanning log file /mnt/log/log/log.220

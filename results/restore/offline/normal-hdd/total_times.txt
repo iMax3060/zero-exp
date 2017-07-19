@@ -1,8 +1,0 @@
-SEQ 241 normal-hdd//restore-seq/agglog.txt
-128 19584 normal-hdd//restore-128/agglog.txt
-256 9803 normal-hdd//restore-256/agglog.txt
-512 4927 normal-hdd//restore-512/agglog.txt
-1024 2476 normal-hdd//restore-1024/agglog.txt
-2048 1261 normal-hdd//restore-2048/agglog.txt
-4096 653 normal-hdd//restore-4096/agglog.txt
-8192 357 normal-hdd//restore-8192/agglog.txt

@@ -1,9 +1,0 @@
-SEQ 82 normal//restore-seq/agglog.txt
-128 4137 normal//restore-128/agglog.txt
-256 2067 normal//restore-256/agglog.txt
-512 1057 normal//restore-512/agglog.txt
-1024 546 normal//restore-1024/agglog.txt
-2048 291 normal//restore-2048/agglog.txt
-4096 161 normal//restore-4096/agglog.txt
-8192 99 normal//restore-8192/agglog.txt
-16384 91 normal//restore-16384/agglog.txt

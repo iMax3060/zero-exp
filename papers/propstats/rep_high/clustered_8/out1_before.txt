@@ -1,3 +1,0 @@
-Copying db ... OK
-Copying log ... OK
-Copying archive ... OK

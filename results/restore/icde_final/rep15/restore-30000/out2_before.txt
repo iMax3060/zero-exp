@@ -1,5 +1,0 @@
-Initialized curr_lsn to 111.21128
-Log _start 21128 end_byte() 21128
-Log _curr_lsn 111.21128 _durable_lsn 111.21128
-Curr epoch  base_lsn 111.0  base 0  start 21128  end 21128
-Old epoch  base_lsn 0.0  base 0  start 0  end 0
