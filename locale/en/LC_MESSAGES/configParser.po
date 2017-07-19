@@ -1,0 +1,279 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-07-27 18:43+0200\n"
+"PO-Revision-Date: 2017-07-27 18:45+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: configParser.py:32
+#| msgid "Open configuration schema file: %s"
+msgid "Open configuration schema file: {configSchemaFilename}"
+msgstr "Open configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:34
+#| msgid "successfully opened configuration schema file: %s"
+msgid "successfully opened configuration schema file: {configSchemaFilename}"
+msgstr "successfully opened configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:35
+#| msgid "Parse configuration schema file: %s"
+msgid "Parse configuration schema file: {configSchemaFilename}"
+msgstr "Parse configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:37
+#| msgid "Successfully parsed configuration schema file: %s"
+msgid "Successfully parsed configuration schema file: {configSchemaFilename}"
+msgstr "Successfully parsed configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:38
+#| msgid "Verify validity of configuration schema file: %s"
+msgid "Verify validity of configuration schema file: {configSchemaFilename}"
+msgstr "Verify validity of configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:41
+#| msgid "Verified validity of configuration schema file: %s"
+msgid "Verified validity of configuration schema file: {configSchemaFilename}"
+msgstr "Verified validity of configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:44
+#| msgid "Open configuration file: %s"
+msgid "Open configuration file: {configFilename}"
+msgstr "Open configuration file: {configFilename}"
+
+#: configParser.py:46
+#| msgid "Successfully opened configuration file: %s"
+msgid "Successfully opened configuration file: {configFilename}"
+msgstr "Successfully opened configuration file: {configFilename}"
+
+#: configParser.py:47
+#| msgid "Parse configuration file: %s"
+msgid "Parse configuration file: {configFilename}"
+msgstr "Parse configuration file: {configFilename}"
+
+#: configParser.py:49
+#| msgid "Successfully parsed configuration file: %s"
+msgid "Successfully parsed configuration file: {configFilename}"
+msgstr "Successfully parsed configuration file: {configFilename}"
+
+#: configParser.py:50
+#| msgid "Check the validity of the configuration file: %s"
+msgid "Check the validity of the configuration file: {configFilename}"
+msgstr "Check the validity of the configuration file: {configFilename}"
+
+#: configParser.py:54
+#| msgid "There are no partitions configured in %s."
+msgid "There are no partitions configured in {configFilename}."
+msgstr "There are no partitions configured in {configFilename}."
+
+#: configParser.py:56
+#| msgid "There is no mountpoint of %s configured in %s."
+msgid ""
+"There is no mountpoint of the partition {partitionName} configured in "
+"{configFilename}."
+msgstr ""
+"There is no mountpoint of the partition {partitionName} configured in "
+"{configFilename}."
+
+#: configParser.py:62
+#| msgid "The partition %s configured in %s is not known."
+msgid ""
+"The partition {partitionName} configured in {configFilename} is not known."
+msgstr ""
+"The partition {partitionName} configured in {configFilename} is not known."
+
+#: configParser.py:64
+#| msgid ""
+#| "The partition configuration field %s configured in %s is not a known."
+msgid ""
+"The partition configuration field {fieldName} configured in {configFilename} "
+"is not a known."
+msgstr ""
+"The partition configuration field {fieldName} configured in {configFilename} "
+"is not a known."
+
+#: configParser.py:66
+#| msgid "The field %s configured in %s is not known."
+msgid "The field {fieldName} configured in {configFilename} is not known."
+msgstr "The field {fieldName} configured in {configFilename} is not known."
+
+#: configParser.py:71
+msgid " under "
+msgstr " under "
+
+#: configParser.py:72
+msgid ""
+"The value {value} at {path} configured in {configFilename} is not of type "
+"{type}."
+msgstr ""
+"The value {value} at {path} configured in {configFilename} is not of type "
+"{type}."
+
+#: configParser.py:74
+msgid "Unknown error in {configFilename}: {errorMessage}"
+msgstr "Unknown error in {configFilename}: {errorMessage}"
+
+#: configParser.py:77
+msgid "Exit program due to an invalid configuration file."
+msgstr "Exit program due to an invalid configuration file."
+
+#: configParser.py:79
+#| msgid "Successfully checked the validity of the configuration file: %s"
+msgid ""
+"Successfully checked the validity of the configuration file: {configFilename}"
+msgstr ""
+"Successfully checked the validity of the configuration file: {configFilename}"
+
+#: configParser.py:82
+#| msgid "The configuration file %s could not be found"
+msgid "The configuration file {configFilename} could not be found."
+msgstr "The configuration file {configFilename} could not be found."
+
+#: configParser.py:83
+msgid "Exit program as the configuration file does not exist."
+msgstr "Exit program as the configuration file does not exist."
+
+#: configParser.py:86
+#| msgid "There is a syntax-error in %s."
+msgid "There is a syntax-error in {configFilename}."
+msgstr "There is a syntax-error in {configFilename}."
+
+#: configParser.py:87
+msgid ""
+"For help finding the syntax error, check https://jsonformatter."
+"curiousconcept.com/."
+msgstr ""
+"For help finding the syntax error, check https://jsonformatter."
+"curiousconcept.com/."
+
+#: configParser.py:89
+msgid "Exit program due to a syntax error in the configuration file."
+msgstr "Exit program due to a syntax error in the configuration file."
+
+#: configParser.py:92
+#| msgid "Close configuration file: %s"
+msgid "Close configuration file: {configFilename}"
+msgstr "Close configuration file: {configFilename}"
+
+#: configParser.py:94
+#| msgid "Successfully closed configuration file: %s"
+msgid "Successfully closed configuration file: {configFilename}"
+msgstr "Successfully closed configuration file: {configFilename}"
+
+#: configParser.py:96
+#| msgid "The configuration schema file %s could not be found"
+msgid ""
+"The configuration schema file {configSchemaFilename} could not be found."
+msgstr ""
+"The configuration schema file {configSchemaFilename} could not be found."
+
+#: configParser.py:97
+msgid "Exit program as the configuration schema file does not exist."
+msgstr "Exit program as the configuration schema file does not exist."
+
+#: configParser.py:100 configParser.py:106
+#| msgid "There is a syntax-error in %s."
+msgid "There is a syntax-error in {configSchemaFilename}."
+msgstr "There is a syntax-error in {configSchemaFilename}."
+
+#: configParser.py:101 configParser.py:107
+msgid ""
+"You are not supposed to change this file. Please restore the original "
+"version provived with this package."
+msgstr ""
+"You are not supposed to change this file. Please restore the original "
+"version provived with this package."
+
+#: configParser.py:103 configParser.py:109
+msgid "Exit program due to a syntax error in the configuration schema file."
+msgstr "Exit program due to a syntax error in the configuration schema file."
+
+#: configParser.py:112
+#| msgid "Close configuration schema file: %s"
+msgid "Close configuration schema file: {configSchemaFilename}"
+msgstr "Close configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:114
+#| msgid "Successfully closed configuration schema file: %s"
+msgid "Successfully closed configuration schema file: {configSchemaFilename}"
+msgstr "Successfully closed configuration schema file: {configSchemaFilename}"
+
+#: configParser.py:175
+msgid "Example of a valid configuration file:"
+msgstr "Example of a valid configuration file:"
+
+#: configParser.py:184
+msgid "Mandatory Parameters:"
+msgstr "Mandatory Parameters:"
+
+#: configParser.py:187
+msgid "Definition of locations where different data of zapps kits are stored."
+msgstr "Definition of locations where different data of zapps kits are stored."
+
+#: configParser.py:188
+msgid ""
+"The directory to store data (or where setup_devices.py mounts the \"device"
+"\")."
+msgstr ""
+"The directory to store data (or where setup_devices.py mounts the \"device"
+"\")."
+
+#: configParser.py:192
+msgid "Optional Parameters:"
+msgstr "Optional Parameters:"
+
+#: configParser.py:194
+msgid "The file where the database file (--sm_dbfile) is stored."
+msgstr "The file where the database file (--sm_dbfile) is stored."
+
+#: configParser.py:195
+msgid "The directory where the log directory (--sm_logdir) is stored."
+msgstr "The directory where the log directory (--sm_logdir) is stored."
+
+#: configParser.py:196
+msgid "The directory where the log archive directory (--sm_archdir) is stored."
+msgstr ""
+"The directory where the log archive directory (--sm_archdir) is stored."
+
+#: configParser.py:197
+msgid "The directory where the backup directory (--sm_backup_dir) is stored."
+msgstr "The directory where the backup directory (--sm_backup_dir) is stored."
+
+#: configParser.py:198
+msgid "The partition that is used to store data on (used by setup_devices.py)."
+msgstr ""
+"The partition that is used to store data on (used by setup_devices.py)."
+
+#: configParser.py:199
+msgid ""
+"If the partition should be formatted using BTRFS instead of ext3 (used by "
+"setup_devices.py)."
+msgstr ""
+"If the partition should be formatted using BTRFS instead of ext3 (used by "
+"setup_devices.py)."
+
+#: configParser.py:200
+msgid ""
+"The directory where the script save_snapshot.py saves snapshots and where "
+"the scripts load_snapshot.py and repeat.py loads snapshots from."
+msgstr ""
+"The directory where the script save_snapshot.py saves snapshots and where "
+"the scripts load_snapshot.py and repeat.py loads snapshots from."
+
+#: configParser.py:201
+msgid "Mount options used by setup_devices.py."
+msgstr "Mount options used by setup_devices.py."
+
+#~ msgid "Unknown error in %s."
+#~ msgstr "Unknown error in %s."

@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-07-24 19:45+0200\n"
+"PO-Revision-Date: 2017-07-27 17:51+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+#: runKits.py:28
+msgid "Successfully spawned thread %s to run the command: %s"
+msgstr "Successfully spawned thread %s to run the command: %s"
+
+#: runKits.py:30 runKits.py:142 runKits.py:150
+msgid "Open file: %s"
+msgstr "Open file: %s"
+
+#: runKits.py:33 runKits.py:145 runKits.py:153
+msgid "Successfully opened file: %s"
+msgstr "Successfully opened file: %s"
+
+#: runKits.py:36
+msgid "Spawn a new subprocess to run the shell command: %s"
+msgstr "Spawn a new subprocess to run the shell command: %s"
+
+#: runKits.py:39
+msgid "Successfully spawned subprocess %s to run the shell command: %s"
+msgstr "Successfully spawned subprocess %s to run the shell command: %s"
+
+#: runKits.py:46 runKits.py:190 runKits.py:200
+msgid "Flush file: %s"
+msgstr "Flush file: %s"
+
+#: runKits.py:48 runKits.py:192 runKits.py:202
+msgid "Successfully flushed file: %s"
+msgstr "Successfully flushed file: %s"
+
+#: runKits.py:49 runKits.py:193 runKits.py:203
+msgid "Close file: %s"
+msgstr "Close file: %s"
+
+#: runKits.py:51 runKits.py:195 runKits.py:205
+msgid "Successfully closed file: %s"
+msgstr "Successfully closed file: %s"
+
+#: runKits.py:52
+msgid "Terminated thread %s to run the command: %s"
+msgstr "Terminated thread %s to run the command: %s"
+
+#: runKits.py:56
+msgid "Kill subprocess %s"
+msgstr "Kill subprocess %s"
+
+#: runKits.py:58
+msgid "Killed subprocess %s"
+msgstr "Killed subprocess %s"
+
+#: runKits.py:104 runKits.py:110 runKits.py:115
+msgid "Command not found: %s"
+msgstr "Command not found: %s"
+
+#: runKits.py:107 runKits.py:113 runKits.py:118
+msgid "Located command %s at %s."
+msgstr "Located command %s at %s."
+
+#: runKits.py:169
+msgid ""
+"Run zapps kits using the following command:\n"
+"%s"
+msgstr ""
+"Run zapps kits using the following command:\n"
+"%s"
+
+#: runKits.py:170
+msgid "Spawn a new subprocess to run the command: %s"
+msgstr "Spawn a new subprocess to run the command: %s"
+
+#: runKits.py:172
+msgid "The subprocess terminated that ran the command: %s"
+msgstr "The subprocess terminated that ran the command: %s"
+
+#: runKits.py:209
+msgid ""
+"Created the following files:\n"
+"%s"
+msgstr ""
+"Created the following files:\n"
+"%s"
+
+#: runKits.py:226
+msgid "Runs zapps kits of the Zero Storage Manager."
+msgstr "Runs zapps kits of the Zero Storage Manager."
+
+#: runKits.py:227
+msgid "Run zapps kits in GDB."
+msgstr "Run zapps kits in GDB."
+
+#: runKits.py:229
+msgid "Activate verbose mode where much diagnostic information is printed."
+msgstr ""
+"Activate verbose mode where much diagnostic information is printed."
+
+#: runKits.py:231
+msgid "The benchmark that gets executed by zapps kits."
+msgstr "The benchmark that gets executed by zapps kits."
+
+#: runKits.py:233
+msgid ""
+"Other arguments used by zapps kits (see zapps kits --help for more "
+"information)."
+msgstr ""
+"Other arguments used by zapps kits (see zapps kits --help for more "
+"information)."

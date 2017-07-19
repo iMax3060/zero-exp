@@ -1,0 +1,22 @@
+{
+  "partitions": {
+    "log": {
+      "device": "/dev/sdc1",
+      "mountpoint": "/mnt/ssd0",
+      "useBTRFS": false
+    },
+    "db": {
+      "device": "/dev/sdd1",
+      "mountpoint": "/mnt/ssd1",
+      "useBTRFS": false
+    }
+  },
+  "snapshotDirectory": "~/snapshots",
+  "mountOptions": [
+    "noatime",
+    "noexec",
+    "noauto",
+    "nodev",
+    "nosuid"
+  ]
+}

@@ -1,0 +1,292 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-07-27 18:43+0200\n"
+"PO-Revision-Date: 2017-07-27 18:44+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: configParser.py:32
+msgid "Open configuration schema file: {configSchemaFilename}"
+msgstr "Öffne die Konfigurationsschemadatei {configSchemaFilename}."
+
+#: configParser.py:34
+msgid "successfully opened configuration schema file: {configSchemaFilename}"
+msgstr ""
+"Erfolgreich die Konfigurationsschemadatei {configSchemaFilename} geöffnet."
+
+#: configParser.py:35
+msgid "Parse configuration schema file: {configSchemaFilename}"
+msgstr "Analysiere die Konfigurationsschemadatei {configSchemaFilename}."
+
+#: configParser.py:37
+msgid "Successfully parsed configuration schema file: {configSchemaFilename}"
+msgstr ""
+"Erfolgreich die Konfigurationsschemadatei {configSchemaFilename} analysiert."
+
+#: configParser.py:38
+msgid "Verify validity of configuration schema file: {configSchemaFilename}"
+msgstr ""
+"Prüfe die Korrektheit der Konfigurationsschemadatei {configSchemaFilename}."
+
+#: configParser.py:41
+msgid "Verified validity of configuration schema file: {configSchemaFilename}"
+msgstr ""
+"Erfolgreich die Korrektheit der Konfigurationsschemadatei "
+"{configSchemaFilename} geprüft."
+
+#: configParser.py:44
+msgid "Open configuration file: {configFilename}"
+msgstr "Öffne die Konfigurationsdatei {configFilename}."
+
+#: configParser.py:46
+msgid "Successfully opened configuration file: {configFilename}"
+msgstr "Erfolgreich Konfigurationsdatei {configFilename} geöffnet."
+
+#: configParser.py:47
+msgid "Parse configuration file: {configFilename}"
+msgstr "Analysiere die Konfigurationsdatei {configFilename}."
+
+#: configParser.py:49
+msgid "Successfully parsed configuration file: {configFilename}"
+msgstr "Erfolgreich die Konfigurationsdatei {configFilename} analysiert."
+
+#: configParser.py:50
+msgid "Check the validity of the configuration file: {configFilename}"
+msgstr "Prüfe die Korrektheit der Konfigurationsdatei {configFilename}."
+
+#: configParser.py:54
+msgid "There are no partitions configured in {configFilename}."
+msgstr "In {configFilename} sind keine Partitionen konfiguriert."
+
+#: configParser.py:56
+msgid ""
+"There is no mountpoint of the partition {partitionName} configured in "
+"{configFilename}."
+msgstr ""
+"Der mountpoint von {partitionName} ist in {configFilename} nicht "
+"konfiguriert."
+
+#: configParser.py:62
+msgid ""
+"The partition {partitionName} configured in {configFilename} is not known."
+msgstr ""
+"Die in {configFilename} konfigurierte Partition {partitionName} ist nicht "
+"bekannt."
+
+#: configParser.py:64
+msgid ""
+"The partition configuration field {fieldName} configured in {configFilename} "
+"is not a known."
+msgstr ""
+"Der in {configFilename} konfigurierte Partitionskonfigurationseintrag "
+"{fieldName} ist nicht bekannt."
+
+#: configParser.py:66
+msgid "The field {fieldName} configured in {configFilename} is not known."
+msgstr ""
+"Der in {configFilename} konfigurierte Eintrag {fieldName} ist nicht bekannt."
+
+#: configParser.py:71
+msgid " under "
+msgstr " unter "
+
+#: configParser.py:72
+msgid ""
+"The value {value} at {path} configured in {configFilename} is not of type "
+"{type}."
+msgstr ""
+"Der in {configFilename} konfigurierte Wert {value} in {path} ist nicht vom "
+"Typ {type}."
+
+#: configParser.py:74
+msgid "Unknown error in {configFilename}: {errorMessage}"
+msgstr "Unbekannter Fehler in {configFilename}: {errorMessage}"
+
+#: configParser.py:77
+msgid "Exit program due to an invalid configuration file."
+msgstr "Verlasse das Programm aufgrund einer ungültigen Konfigurationsdatei."
+
+#: configParser.py:79
+msgid ""
+"Successfully checked the validity of the configuration file: {configFilename}"
+msgstr ""
+"Erfolgreich die Korrektheit der Konfigurationsdatei {configFilename} geprüft."
+
+#: configParser.py:82
+#, fuzzy
+#| msgid "The configuration file {configFilename} could not be found"
+msgid "The configuration file {configFilename} could not be found."
+msgstr "Die Konfigurationsdatei {configFilename} konnte nicht gefunden werden."
+
+#: configParser.py:83
+msgid "Exit program as the configuration file does not exist."
+msgstr ""
+"Verlasse das Programm da eine Konfigurationsdatei nicht gefunden wurde."
+
+#: configParser.py:86
+msgid "There is a syntax-error in {configFilename}."
+msgstr "Es gibt einen Syntaxfehler in {configFilename}."
+
+#: configParser.py:87
+msgid ""
+"For help finding the syntax error, check https://jsonformatter."
+"curiousconcept.com/."
+msgstr ""
+"Für Hilfe bei der Suche nach dem Syntaxfehler, nutze https://jsonformatter."
+"curiousconcept.com/."
+
+#: configParser.py:89
+msgid "Exit program due to a syntax error in the configuration file."
+msgstr ""
+"Verlasse das Programm aufgrund eines Syntaxfehlers in einer "
+"Konfigurationsdatei."
+
+#: configParser.py:92
+msgid "Close configuration file: {configFilename}"
+msgstr "Schließe die Konfigurationsdatei {configFilename}."
+
+#: configParser.py:94
+msgid "Successfully closed configuration file: {configFilename}"
+msgstr "Erfolgreich die Konfigurationsdatei {configFilename} geschlossen."
+
+#: configParser.py:96
+#, fuzzy
+#| msgid ""
+#| "The configuration schema file {configSchemaFilename} could not be found"
+msgid ""
+"The configuration schema file {configSchemaFilename} could not be found."
+msgstr ""
+"Die Konfigurationsschemadatei {configSchemaFilename} konnte nicht gefunden "
+"werden."
+
+#: configParser.py:97
+msgid "Exit program as the configuration schema file does not exist."
+msgstr ""
+"Verlasse das Programm da die Konfigurationsschemadatei nicht gefunden wurde."
+
+#: configParser.py:100 configParser.py:106
+msgid "There is a syntax-error in {configSchemaFilename}."
+msgstr ""
+"Es gibt einen Syntaxfehler in der Konfigurationsschemadatei "
+"{configSchemaFilename}."
+
+#: configParser.py:101 configParser.py:107
+msgid ""
+"You are not supposed to change this file. Please restore the original "
+"version provived with this package."
+msgstr ""
+"Sie sollten diese Datei nicht verändern. Bitte stellen sie die "
+"Originalversion, welche mit diesem Paket ausgeliefert wurde, wieder her."
+
+#: configParser.py:103 configParser.py:109
+msgid "Exit program due to a syntax error in the configuration schema file."
+msgstr ""
+"Verlasse das Programm aufgrund eines Syntaxfehlers in der "
+"Konfigurationsschemadatei."
+
+#: configParser.py:112
+msgid "Close configuration schema file: {configSchemaFilename}"
+msgstr "Öffne die Konfigurationsschemadatei {configSchemaFilename}."
+
+#: configParser.py:114
+msgid "Successfully closed configuration schema file: {configSchemaFilename}"
+msgstr ""
+"Erfolgreich die Konfigurationsschemadatei {configSchemaFilename} geschlossen."
+
+#: configParser.py:175
+msgid "Example of a valid configuration file:"
+msgstr "Beispiel einer gültigen Konfigurationsdatei:"
+
+#: configParser.py:184
+msgid "Mandatory Parameters:"
+msgstr "Obligatorische Parameter:"
+
+#: configParser.py:187
+msgid "Definition of locations where different data of zapps kits are stored."
+msgstr ""
+"Definition der Speicherorte, an welchen die verschiedenen Daten von zapps "
+"kits gespeichert werden."
+
+#: configParser.py:188
+msgid ""
+"The directory to store data (or where setup_devices.py mounts the \"device"
+"\")."
+msgstr ""
+"Der Ordner in welchem die Daten gespeichert werden sollen (oder an welchem "
+"setup_devices.py das entsprechende \"device\" einhängt)."
+
+#: configParser.py:192
+msgid "Optional Parameters:"
+msgstr "Optionale Parameter:"
+
+#: configParser.py:194
+msgid "The file where the database file (--sm_dbfile) is stored."
+msgstr "Der Speicherort der Datenbankdatei (--sm_dbfile)."
+
+#: configParser.py:195
+msgid "The directory where the log directory (--sm_logdir) is stored."
+msgstr "Der Speicherort des Logordners (--sm_logdir)."
+
+#: configParser.py:196
+msgid "The directory where the log archive directory (--sm_archdir) is stored."
+msgstr "Der Speicherort des Logarchivordners (--sm_archdir)."
+
+#: configParser.py:197
+msgid "The directory where the backup directory (--sm_backup_dir) is stored."
+msgstr "Der Speicherort des Backupordners (--sm_backup_dir)."
+
+#: configParser.py:198
+msgid "The partition that is used to store data on (used by setup_devices.py)."
+msgstr ""
+"Die Partition auf welcher die Daten gespeichert werden (wird von "
+"setup_devices.py verwendet)."
+
+#: configParser.py:199
+msgid ""
+"If the partition should be formatted using BTRFS instead of ext3 (used by "
+"setup_devices.py)."
+msgstr ""
+"Falls die Partition mit BTRFS statt ext3 formatiert werden soll (wird von "
+"setup_devices.py verwendet)."
+
+#: configParser.py:200
+msgid ""
+"The directory where the script save_snapshot.py saves snapshots and where "
+"the scripts load_snapshot.py and repeat.py loads snapshots from."
+msgstr ""
+"Der Ordner in welchem save_snapshot.py Schnappschüsse speichert und von "
+"welchem load_snapshot.py und repeat.py Schnappschüsse laden."
+
+#: configParser.py:201
+msgid "Mount options used by setup_devices.py."
+msgstr "Einhängoptionen, welche von setup_devices.py verwendet werden."
+
+#~ msgid "successfully opened configuration schema file: %s"
+#~ msgstr "Erfolg beim Öffnen der Konfigurationsschemadatei: %s"
+
+#~ msgid "Parse configuration schema file: %s"
+#~ msgstr "Analysiere die Konfigurationsschemadatei: %s"
+
+#~ msgid "Successfully parsed configuration schema file: %s"
+#~ msgstr "Erfolg beim Analysieren der Konfigurationsschemadatei: %s"
+
+#~ msgid "Open configuration file: %s"
+#~ msgstr "Öffne Konfigurationsdatei: %s"
+
+#~ msgid "Unknown error in %s."
+#~ msgstr "Unbekannter Fehler in %s."
+
+#~ msgid "Close configuration schema file: %s"
+#~ msgstr "Schließe die Konfigurationsschemadatei: %s"

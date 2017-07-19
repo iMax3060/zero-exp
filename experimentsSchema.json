@@ -1,0 +1,211 @@
+{
+  "id": "http://zero-exp/experiments#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Experiment for the Zero Storage Manager",
+  "description": "An experiment containing multiple benchmark runs using 'zapps kits'. Use 'runExperiment.py' to run an experiment.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Experiment Name",
+      "description": "The name of the experiment which will also be the name of the directory where the files created by the experiment are stored.",
+      "$ref": "#/definitions/filename"
+    },
+    "globalConfiguration": {
+      "title": "Global Configuration",
+      "description": "Configuration parameters used by each benchmark run.",
+      "type": "object",
+      "$ref": "#/definitions/generalConfiguration"
+    },
+    "namedConfigurations": {
+      "title": "Configurations Set",
+      "description": "Sets of configurations associated with names (avoid cyclic usages).",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/generalConfiguration"
+          },
+          {
+            "properties": {
+              "name": {
+                "title": "Configuration Name",
+                "description": "The name of the configuration set through which it can be used.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        ]
+      }
+    },
+    "experimentGroups": {
+      "title": "Experiment Groups",
+      "description": "Experiment groups encapsulate a set of individual benchmark runs and other experiment groups that share the same basic configuration and that is put in the same directory under the experiments directory.",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/experiments"
+          },
+          {
+            "$ref": "#/definitions/generalConfiguration"
+          },
+          {
+            "properties": {
+              "name": {
+                "title": "Experiment Group Name",
+                "description": "The name of the experiment group through which it can be executed and which will also be the name of the directory where the files created by this experiment group are stored.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        ]
+      }
+    },
+    "experiment": {
+      "title": "Experiment",
+      "description": "The benchmark runs and experiment groups that get executed during this experiment.",
+      "$ref": "#/definitions/experiments"
+    },
+    "allowMultipleConfigurations": {
+      "title": "Multiple Active Configurations",
+      "description": "Parameters of 'zapps kits' that can be configured multiple times (does not overwrite configuration with lower priority).",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "uniqueItems": true
+      }
+    }
+  },
+  "definitions": {
+    "filename": {
+      "type": "string",
+      "pattern": "^[a-zA-Z_0-9][^/\\:.]{0,254}$"
+    },
+    "partitions": {
+      "type": "string",
+      "enum": [
+        "db",
+        "log",
+        "archive",
+        "backup",
+        "all"
+      ]
+    },
+    "generalConfiguration": {
+      "type": "object",
+      "properties": {
+        "configurationFile": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/filename"
+            },
+            {
+              "title": "Configuration File Path",
+              "description": "The absolute or relative path to the configuration file that defines the locations where the Zero Storage Manager stores its data."
+            }
+          ]
+        },
+        "initializePartitions": {
+          "title": "Partitions to Initialize",
+          "description": "List the partitions (or 'all' partitions that are configured in the configuration file) that should be initialized using 'setupDevices.py'.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/partitions"
+          }
+        },
+        "TRIMdrives": {
+          "title": "Drives to TRIM",
+          "description": "List the partitions (or 'all' partitions that are configured in the configuration file) whose devices should be TRIMed (SSDs only) before each benchmark run.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/partitions"
+          }
+        },
+        "snapshot": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/filename"
+            },
+            {
+              "name": "Snapshot Name",
+              "description": "Name of the database snapshot that was stored using 'saveSnapshot.py'."
+            }
+          ]
+        },
+        "namedConfigurations": {
+          "type": "array",
+          "items": {
+            "title": "Load Configuration Sets",
+            "description": "The configuration sets listed here are loaded and settings not already set are added to this configuration.",
+            "type": "string",
+            "uniqueItems": true
+          }
+        },
+        "zappsParameters": {
+          "title": "zapps kits Parameters",
+          "description": "Parameters propagated to the 'zapps kits' command.",
+          "type": "object",
+          "additionalProperties": {
+            "not": {
+              "type": ["object", "array"]
+            }
+          }
+        }
+      }
+    },
+    "experiments": {
+      "type": "object",
+      "properties": {
+        "groups": {
+          "title": "Execute Experiment Groups",
+          "description": "The experiment groups listed here are executed as (sub)groups in their own folder with their own settings.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "individuals": {
+          "title": "Execute Benchmark Runs",
+          "description": "The benchmark runs specified here are executed.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/generalConfiguration"
+              },
+              {
+                "properties": {
+                  "title": "",
+                  "name": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/filename"
+                      },
+                      {
+                        "name": "Benchmark Run Name",
+                        "description": "Name of the benchmark run which will also be the name of the directory where the files created by this benchmark run are stored."
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "experiments"
+  ]
+}

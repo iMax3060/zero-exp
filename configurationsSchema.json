@@ -1,0 +1,126 @@
+{
+  "id": "http://zero-exp/configurations#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Drive Configuration for the Zero Storage Manager",
+  "description": "Configuration of the drives used by the Zero Storage Manager to store its data on.",
+  "type": "object",
+  "properties": {
+    "partitions": {
+      "title": "Partition Configuration",
+      "description": "Configuration of the partitions used by the Zero Storage Manager to store its data on.",
+      "type": "object",
+      "properties": {
+        "db": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/partitionConfiguration"
+            },
+            {
+              "title": "DB File Configuration",
+              "description": "Configuration of the location used to store the DB file ('--sm_dbfile')."
+            }
+          ]
+        },
+        "log": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/partitionConfiguration"
+            },
+            {
+              "title": "Log Folder Configuration",
+              "description": "Configuration of the location used to store the log directory ('--sm_logdir')."
+            }
+          ]
+        },
+        "archive": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/partitionConfiguration"
+            },
+            {
+              "title": "Log Archive Configuration",
+              "description": "Configuration of the location used to store the log archive ('--sm_archdir')."
+            }
+          ]
+        },
+        "backup": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/partitionConfiguration"
+            },
+            {
+              "title": "DB Backup Configuration",
+              "description": "Configuration of the location used to store the backup directory ('--sm_backup_dir')."
+            }
+          ]
+        }
+      }
+    },
+    "snapshotDirectory": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/filePath"
+        },
+        {
+          "title": "Snapshot Directory",
+          "description": "The directory where the script save_snapshot.py saves snapshots and where the scripts load_snapshot.py and repeat.py loads snapshots from."
+        }
+      ]
+    },
+    "mountOptions": {
+      "title": "Mount Options",
+      "description": "Mount options used by setup_devices.py.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "uniqueItems": true
+      }
+    }
+  },
+  "definitions": {
+    "filePath": {
+      "type": "string",
+      "pattern": "^([a-zA-Z0-9]+:/|[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*:||\\.|\\.\\.|~|[a-zA-Z_0-9][^/\\:]{0,254})(/[a-zA-Z_0-9][^/\\:]{0,254})*$"
+    },
+    "partitionConfiguration": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/filePath"
+            },
+            {
+              "title": "Device",
+              "description": "The path to the device file to use (typically in '/dev/')."
+            }
+          ]
+        },
+        "mountpoint": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/filePath"
+            },
+            {
+              "title": "Mount Point",
+              "description": "The path to the directory where to mount the device (directory used to store the data of the Zero Storage Manager)."
+            }
+          ]
+        },
+        "useBTRFS": {
+          "title": "BTRFS?",
+          "description": "Use the BTRFS file system when formatting the partition using setup_devices.py?\n true -> yes, false -> no",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "mountpoint"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "partitions"
+  ]
+}

@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-07-24 19:45+0200\n"
+"PO-Revision-Date: 2017-07-24 20:02+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: runKits.py:28
+msgid "Successfully spawned thread %s to run the command: %s"
+msgstr "Erfolg beim Starten von Thread %s zur Ausführung von Kommando: %s"
+
+#: runKits.py:30 runKits.py:142 runKits.py:150
+msgid "Open file: %s"
+msgstr "Öffne Datei: %s"
+
+#: runKits.py:33 runKits.py:145 runKits.py:153
+msgid "Successfully opened file: %s"
+msgstr "Erfolg beim Öffnen der Datei: %s"
+
+#: runKits.py:36
+msgid "Spawn a new subprocess to run the shell command: %s"
+msgstr ""
+"Starte einen neuen Unterprozess zur Ausführung des shell-Kommandos: %s"
+
+#: runKits.py:39
+msgid "Successfully spawned subprocess %s to run the shell command: %s"
+msgstr ""
+"Erfolg beim Starten des neuen Unterprozesses %s zur Ausführung des shell-"
+"Kommandos: %s"
+
+#: runKits.py:46 runKits.py:190 runKits.py:200
+msgid "Flush file: %s"
+msgstr "Ausschreiben der Datei: %s"
+
+#: runKits.py:48 runKits.py:192 runKits.py:202
+msgid "Successfully flushed file: %s"
+msgstr "Erfolg beim Ausschreiben der Datei: %s"
+
+#: runKits.py:49 runKits.py:193 runKits.py:203
+msgid "Close file: %s"
+msgstr "Schließe Datei: %s"
+
+#: runKits.py:51 runKits.py:195 runKits.py:205
+msgid "Successfully closed file: %s"
+msgstr "Erfolg beim schließen der Datei: %s"
+
+#: runKits.py:52
+msgid "Terminated thread %s to run the command: %s"
+msgstr "Thread %s zum Ausführen von Kommando %s wurde beendet."
+
+#: runKits.py:56
+msgid "Kill subprocess %s"
+msgstr "Terminiere Unterprozess %s."
+
+#: runKits.py:58
+msgid "Killed subprocess %s"
+msgstr "Habe Unterprozess %s terminiert."
+
+#: runKits.py:104 runKits.py:110 runKits.py:115
+msgid "Command not found: %s"
+msgstr "Kommando nicht gefunden: %s"
+
+#: runKits.py:107 runKits.py:113 runKits.py:118
+msgid "Located command %s at %s."
+msgstr "Kommando %s bei %s gefunden."
+
+#: runKits.py:169
+msgid ""
+"Run zapps kits using the following command:\n"
+"%s"
+msgstr ""
+"Führe zapps kits unter Nutzung folgendes Kommandos aus:\n"
+"%s"
+
+#: runKits.py:170
+msgid "Spawn a new subprocess to run the command: %s"
+msgstr "Starte einen neuen Unterprozess zur Ausführung des Kommandos: %s"
+
+#: runKits.py:172
+msgid "The subprocess terminated that ran the command: %s"
+msgstr "Der Unterprozess zur Ausführung von Kommando %s ist terminiert."
+
+#: runKits.py:209
+msgid ""
+"Created the following files:\n"
+"%s"
+msgstr ""
+"Habe die folgenden Dateien erstellt:\n"
+"%s"
+
+#: runKits.py:226
+msgid "Runs zapps kits of the Zero Storage Manager."
+msgstr "Führt zapps kits des Zero Storage Managers aus."
+
+#: runKits.py:227
+msgid "Run zapps kits in GDB."
+msgstr "Führt zapps kits in GDB aus."
+
+#: runKits.py:229
+msgid "Activate verbose mode where much diagnostic information is printed."
+msgstr ""
+"Aktiviert den ausführlichen Modus, in welchem viel mehr diagnostische "
+"Informationen ausgegeben werden."
+
+#: runKits.py:231
+msgid "The benchmark that gets executed by zapps kits."
+msgstr "Der Benchmark, welcher von zapps kits durchgeführt wird."
+
+#: runKits.py:233
+msgid ""
+"Other arguments used by zapps kits (see zapps kits --help for more "
+"information)."
+msgstr ""
+"Andere Einstellungen von zapps kits (schaue unter zapps kits --help für "
+"weitere Informationen)."
