@@ -1,7 +1,6 @@
 #!/bin/bash
 
 RUN_CMD="./run_kits.sh"
-# RUN_CMD="./run_kits.sh --debug"
 
 function die() { echo >&2 "$@"; exit 1; }
 
@@ -36,6 +35,8 @@ Available options are:
     Saves mercurial revisions and diff
   --help
     Shows this message
+  --debug
+    Pass "--debug" option to underlying command
   
   'experiment-file' is a file that will be passed to each benchmark run
   as the experiment properties file. The intended values for the experiment
@@ -48,7 +49,7 @@ EOF
 # GETOPT CONFIG
 ################
 
-OPTSPEC=`getopt -o i:,o:,m --long iterations:,outdir:,help,run-missing \
+OPTSPEC=`getopt -o i:,o:,m,d --long iterations:,outdir:,help,run-missing,debug \
     -n 'repeat.sh' -- "$@"`
 
 if [ $? != 0 ] ; then usage; exit 1; fi
@@ -60,6 +61,7 @@ eval set -- "$OPTSPEC"
 ITERATIONS=1
 RUN_MISSING=0
 OUTDIR=""
+DEBUG=0
 
 while true; do
     case "$1" in
@@ -70,6 +72,9 @@ while true; do
         -o | --outdir )
             OUTDIR=$2
             shift 2 ;;
+        -d | --debug )
+            DEBUG=1
+            shift ;;
         -m | --run-missing )
             RUN_MISSING=1
             shift ;;
@@ -92,6 +97,10 @@ shift
 source $EXP_SOURCE
 
 [[ -v CFG[@] ]] || die "Global variable CFG must be defined"
+
+if (($DEBUG)); then
+    RUN_CMD="$RUN_CMD --debug"
+fi
 
 function runOnce()
 {
