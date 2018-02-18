@@ -1,5 +1,5 @@
 set terminal cairolatex standalone pdf size 8.5cm,5cm dashed transparent font "default,9"
-set output "accum_".bufsize.".tex"
+set output "accum_".mytitle.".tex"
 
 set style line 11 lc rgb '#000000' lt 1
 set style line 12 lc rgb '#444444' lt 0 lw 1

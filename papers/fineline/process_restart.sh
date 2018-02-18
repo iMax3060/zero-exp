@@ -3,9 +3,9 @@
 EXPDIR=$1
 PLOTDIR=gnuplot
 
-ARCH_DEV=sdf
 LOG_DEV=sdd
-BACKUP_DEV=sdi
+ARCH_DEV=sde
+DB_DEV=sdf
 
 if [ ! -d "$EXPDIR" ]; then
     echo "Directory not found: $EXPDIR"
@@ -28,12 +28,12 @@ function getstat()
 }
 
 STATS="log_efficiency"
-TSERIES="tput"
+TSERIES="tput xctlatency"
 EXPNAME="warmup_db"
 # EXPNAME="buffersizes"
 
 # Size of window when applying moving average
-MAVG_WINDOW=40
+MAVG_WINDOW=10
 
 for s in $STATS; do
     rm -f $EXPDIR/$s.txt
@@ -53,13 +53,15 @@ for d in $EXPDIR/$EXPNAME-*; do
 
     if [ -f $DIR/iostat.txt ]; then
         cat $DIR/iostat.txt |
-        awk -v archdev=$ARCH_DEV -v logdev=$LOG_DEV \
+        awk -v archdev=$ARCH_DEV -v logdev=$LOG_DEV -v dbdev=$DB_DEV \
             'BEGIN { track = 0; }
-             { if (track == 4) { print a, b, c, d; track = 0 } }
-             $1 == archdev { a = $7; track++ }
-             $1 == archdev { b = $6; track++ }
-             $1 == logdev { c = $7; track++}
-             $1 == logdev { d = $6; track++}' \
+             { if (track == 6) { print a, b, c, d, e, f; track = 0 } }
+             $1 == dbdev { e = $7; track++ }
+             $1 == dbdev { f = $6; track++ }
+             $1 == archdev { c = $7; track++ }
+             $1 == archdev { d = $6; track++ }
+             $1 == logdev { a = $7; track++}
+             $1 == logdev { b = $6; track++}' \
             > $DIR/iostat_dev.txt
     fi
 
@@ -80,6 +82,12 @@ for d in $EXPDIR/$EXPNAME-*; do
         TITLE="ARIES restart"
     elif [ "$PARAM" == "instant" ]; then
         TITLE="Instant restart"
+    elif [ "$PARAM" == "sorted" ]; then
+        TITLE="Part. log index"
+    elif [ "$PARAM" == "cleaner" ]; then
+        TITLE="Instant + background redo + cleaner"
+    elif [ "$PARAM" == "pagepass" ]; then
+        TITLE="Instant + background redo"
     else
         TITLE=$PARAM"t"
     fi
@@ -103,6 +111,35 @@ for d in $EXPDIR/$EXPNAME-*; do
         }' \
         $DIR/agglog.txt > $DIR/agglog_smooth.txt
 
+    # Smooth-out xct latency output
+    touch $EXPDIR/xctlatency.txt
+    awk -v title="$TITLE" -v window=$MAVG_WINDOW '
+         BEGIN { print title }
+         {
+            n = window
+            for (i = 0; i < n-1; i++) {
+                t[i] = t[i+1]
+            }
+            if ($1 > 0) {
+                t[n-1] = $1
+            }
+            else if (n == 1) {
+                t[n-1] = 1000000 
+            }
+            else {
+                t[n-1] = t[n-2] + 1000000
+                t[n-1] = 0
+            }
+            sum_t = 0
+            for (i = 0; i < n; i++) {
+                sum_t += t[i]
+            }
+
+            div = 1000000 * (NR > window ? window : NR);
+            print sum_t/div
+        }' \
+        $DIR/xctlatency.txt > $DIR/xctlatency_smooth.txt
+
     # echo `getstat $DIR restore_log_volume`
     # echo `getstat $DIR la_read_volume`
 
@@ -117,6 +154,10 @@ for d in $EXPDIR/$EXPNAME-*; do
     # Combine latencies of this experiment with the others
     paste $DIR/agglog_smooth.txt $EXPDIR/tput.txt > $EXPDIR/tmp.txt
     mv $EXPDIR/tmp.txt $EXPDIR/tput.txt
+
+    # Combine latencies of this experiment with the others
+    paste $DIR/xctlatency_smooth.txt $EXPDIR/xctlatency.txt > $EXPDIR/tmp.txt
+    mv $EXPDIR/tmp.txt $EXPDIR/xctlatency.txt
 
     # gnuplot -e "dir='"$DIR"'; bufsize="$PARAM"; rbegin="$RBEGIN"; rend="$REND"; ymax="$YMAX";" \
     #     tput_restore.gp
@@ -155,8 +196,10 @@ if [ $COUNT -gt 0 ]; then
     # sed -i -e 's/\t\t/\t?\t/g' -e 's/\t\t/\t?\t/g' -e 's/^\t/?\t/g' $EXPDIR/tput.txt
 
     # trim columns to they have the same number of lines
-    awk '{ if (NF > 1) {print $0 }}' $EXPDIR/tput.txt > tmp.txt
+    awk -v ncol=$COUNT '{ if (NR==1 || NF == ncol) {print $0}}' $EXPDIR/tput.txt > tmp.txt
     mv tmp.txt $EXPDIR/tput.txt
+    awk -v ncol=$COUNT '{ if (NR==1 ||NF == ncol) {print $0}}' $EXPDIR/xctlatency.txt > tmp.txt
+    mv tmp.txt $EXPDIR/xctlatency.txt
 
     NCOLUMNS=$(awk 'NR==2 {print NF}' $EXPDIR/tput.txt)
     echo NCOLUMNS=$NCOLUMNS
@@ -175,6 +218,8 @@ if [ $COUNT -gt 0 ]; then
     # TXN_DIFF=$(awk 'NR<420{ s1+=$1; s2+=$2 } END { print s2-s1 }' $EXPDIR/tput.txt)
     gnuplot -e "dir='"$EXPDIR"'; redolen="$REDO_LEN"; txndiff="$TXN_DIFF";" instantrestart.gp
 
+    # gnuplot -e "dir='"$EXPDIR"'; redolen="$REDO_LEN"; ncolumns="$NCOLUMNS";" xctlatency.gp
+
     # output rep data into extra file for txndiffs
     # echo $REDO_LEN $TXN_DIFF >> $EXPDIR/../txndiff.txt
 
@@ -189,26 +234,36 @@ if [ $COUNT -gt 0 ]; then
     # head -n 720 $EXPDIR/tput.txt \
     cat $EXPDIR/tput.txt \
     | awk -v amax=$INSTANT_MAX -v imax=$INSTANT_MAX -v prefix=$REDO_LEN \
-        'NR>1 { s1 += (amax-$1); if (NF>1) {s2 += (imax-$2)} } END { print prefix, s1, s2, s1-s2 }' \
+        'NR>1 { s1 += (amax-$1); s2 += (imax-$2);} END { print prefix, s1, s2, s1-s2 }' \
         >> $EXPDIR/../txnmiss.txt
 
-#     gnuplot -e "dir='"$EXPDIR"'; fnum=1; yend=0.1; xbegin=0; xend=15" instantrestart_zoom.gp
-#     gnuplot -e "dir='"$EXPDIR"'; fnum=2; yend=0.1; xbegin=42; xend=57" instantrestart_zoom.gp
-#     gnuplot -e "dir='"$EXPDIR"'; fnum=3; yend=10; xbegin=42; xend=57" instantrestart_zoom.gp
+    # use script below to compare 3 data series
+        # 'NR>1 { s1 += (amax-$1); s2 += (imax-$2); s3 += (imax-$3)} END { print prefix, s1, s2, s3, s1-s2 }' \
+
+    # FIRST_TXN=$(awk 'NR>1 && $1>0{print NR; exit}' $EXPDIR/tput.txt)
+    # gnuplot -e "dir='"$EXPDIR"'; fnum=1; yend=0.4; xbegin=0; xend=15" instantrestart_zoom.gp
+    # gnuplot -e "dir='"$EXPDIR"'; fnum=2; yend=0.4; xbegin=$((FIRST_TXN-5)); xend=$((FIRST_TXN+10))" instantrestart_zoom.gp
+    # gnuplot -e "dir='"$EXPDIR"'; fnum=3; yend=10; xbegin=42; xend=57" instantrestart_zoom.gp
 
     # pdfcompile tput
+    # pdfcompile xctlatency
     pdfcompile instantrestart
     # pdfcompile instantrestart_zoom1
     # pdfcompile instantrestart_zoom2
     # pdfcompile instantrestart_zoom3
 
-    mv instantrestart.pdf $EXPDIR/../instantrestart_$REDO_LEN.pdf
+    # cp xctlatency.pdf $EXPDIR/../xctlatency_$REDO_LEN.pdf
+    # mv xctlatency.pdf xctlatency_$REDO_LEN.pdf
+    cp instantrestart.pdf $EXPDIR/../instantrestart_$REDO_LEN.pdf
+    mv instantrestart.pdf instantrestart_$REDO_LEN.pdf
+    # mv instantrestart_zoom1.pdf $EXPDIR/../instantrestart_"$REDO_LEN"_zoom1.pdf
+    # mv instantrestart_zoom2.pdf $EXPDIR/../instantrestart_"$REDO_LEN"_zoom2.pdf
 
-    pdfcompile key
-    pdfcrop key.pdf key.pdf > /dev/null
-    mv key.pdf restart_key.pdf
+#     pdfcompile key
+#     pdfcrop key.pdf key.pdf > /dev/null
+#     mv key.pdf restart_key_cleaner.pdf
 
-    rm -f *.aux *.log *-inc.pdf *.tex
+    # rm -f *.aux *.log *-inc.pdf *.tex
     # pdfunite tput_*.pdf bandwidth_*.pdf \
     #     losses.pdf bandwidth.pdf xctlatency.pdf xctlatency_distr.pdf tput_all.pdf 1> /dev/null 2>&1
 fi

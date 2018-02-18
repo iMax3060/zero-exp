@@ -1,3 +1,6 @@
+set terminal cairolatex standalone pdf size 7cm,3cm color colortext transparent font "default,8"
+set output "writesizes_".bufsize.".tex"
+
 set style line 11 lc rgb '#808080' lt 1
 set border 11 back ls 11
 set style line 12 lc rgb '#444444' lt 0 lw 1
@@ -32,23 +35,34 @@ set palette defined ( 0 '#1B9E77',\
 
 set tics textcolor rgb "black"
 
-set terminal cairolatex standalone pdf size 8.5cm,4cm dashed color colortext transparent font "default,9"
-set output "xctlatency.tex"
-set datafile separator "\t"
+# set title "\\detokenize{".dir."}"
+# set key outside bottom
+set key outside top right horizontal opaque Right  width 3
+# set key width -5
 
-set key top right autotitle columnhead opaque samplen 2 width 2
+# set lmargin 8
+# set rmargin 8
+# set tmargin 1.5
 
-# set title "Segment size: 1024 KB (adaptive)"
-# unset key
-
-set xlabel "Time (min)"
-set xrange [4:14]
-
-set ylabel "Latency (ms)"
-set ytics 0.1,10 nomirror
-set yrange [0.1:150]
+set xtics nomirror
+set xlabel "Write size ($\\times 10^3$ pages of 8\\,KB)"
 set logscale y
+# set xrange [1:1850]
+# set xtics 0,200
 
-file = dir."/xctlatency.txt"
+set ytics nomirror
+set ylabel "Frequency"
+unset mytics
+set format y "$10^{%L}$"
+set yrange [1:1000000]
+# set format y "%.1f"
 
-plot for [i=1:ncolumns] file using (column(0)/60):i with lines ls i
+set decimal locale
+set label "Single-page writes = ".sprintf("%'.0f",spwrites) at graph 0.2,graph 0.7
+
+# binwidth=100
+# bin(x,width)=(x <= 8 ? x : width*floor(x/width))
+# set boxwidth binwidth
+
+# plot dir."/writesizes.txt" using (bin(column(0),binwidth)):2 smooth freq with boxes notitle
+plot dir."/writesizes.txt" using (column(0)/1000):2 with lines ls 2 notitle

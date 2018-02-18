@@ -17,6 +17,8 @@ MAVG_WINDOW=20
 # How many seconds before failure to use in avg. pre-failure throughput calculation
 PRE_FAILURE_WINDOW=60
 
+EXPNAME=buffersizes
+
 STATS="avg_write_bwidth"
 
 for s in $STATS; do
@@ -24,8 +26,9 @@ for s in $STATS; do
 done
 rm -f pdflatex.txt
 
-for d in $(ls $EXPDIR); do
-    echo "processing $d"
+for d in $EXPDIR/buffersizes-*; do
+    d=$(basename $d)
+    # BUFSIZE=${d#buffersizes-}
     DIR=$EXPDIR/$d
     [ -d $DIR ] || continue;
 
@@ -46,7 +49,7 @@ for d in $(ls $EXPDIR); do
             }
             div = nr > window ? window : nr;
 
-            print $1, $2, $3, sum_t/div, $5
+            print $1, $2, $3, sum_t/div, $5, $6
         }' \
         $DIR/propstats.txt > $DIR/propstats_ext.txt
 
@@ -59,24 +62,24 @@ for d in $(ls $EXPDIR); do
     mv backlog.pdf $DIR/
 done
 
-sort -n -k2 $EXPDIR/avg_write_bwidth.txt > tmp.txt
-mv tmp.txt $EXPDIR/avg_write_bwidth.txt
-gnuplot -e "dir='"$EXPDIR"'" wbandwidth.gp
-pdfcompile wbandwidth
+# sort -n -k2 $EXPDIR/avg_write_bwidth.txt > tmp.txt
+# mv tmp.txt $EXPDIR/avg_write_bwidth.txt
+# gnuplot -e "dir='"$EXPDIR"'" wbandwidth.gp
+# pdfcompile wbandwidth
 
-LIST="mixed_200k oldest_200k clustered_8 log_based"
+# LIST="mixed_200k oldest_200k clustered_8 log_based"
 
-gnuplot -e "dir='"$EXPDIR"'; list='$LIST'" lines.gp
-pdfcompile lines
-mv lines.pdf backlog.pdf
+# gnuplot -e "dir='"$EXPDIR"'; list='$LIST'" lines.gp
+# pdfcompile lines
+# mv lines.pdf backlog.pdf
 
-pdfcompile key
-pdfcrop key.pdf key.pdf
+# pdfcompile key
+# pdfcrop key.pdf key.pdf
 
 rm -f *.aux *.log *-inc.pdf *.tex
 # pdfunite $EXPDIR/*/backlog.pdf $EXPDIR/backlog_all.pdf \
 #     1> /dev/null 2>&1
 
-mv *.pdf $EXPDIR/
+# mv *.pdf $EXPDIR/
 # mv *.txt $EXPDIR/
 

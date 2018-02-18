@@ -26,17 +26,18 @@ set palette defined ( 0 '#1B9E77',\
 		      7 '#666666' )
 
 # Plot key in separate file
-set terminal cairolatex standalone pdf size 17cm,1cm dashed transparent font "default,9"
-set key center bottom outside vertical maxrows 1
-set key samplen 4 width 1
+# set terminal cairolatex standalone pdf size 17cm,1cm dashed transparent font "default,9"
+# set key center bottom outside vertical maxrows 1
+# set key samplen 4 width 1
 
-unset border
-unset tics
-set output "key.tex"
-plot [0:1] [0:1] NaN with lines ls 1 lw 5 title "ARIES restart", \
-    NaN with lines ls 2 lw 5 title "Instant restart"
+# unset border
+# unset tics
+# set output "key.tex"
+# plot [0:1] [0:1] NaN with lines ls 1 lw 5 title "ARIES restart", \
+#     NaN with lines ls 2 lw 5 title "Instant restart"
+#     # NaN with lines ls 3 lw 5 title "Part. log index"
 
-set terminal cairolatex standalone pdf size 8cm,4cm dashed color colortext transparent font "default,8"
+set terminal cairolatex standalone pdf size 8cm,5.5cm dashed color colortext transparent font "default,8"
 set output "instantrestart.tex"
 set datafile separator "\t"
 
@@ -49,22 +50,25 @@ set tics textcolor rgb "black"
 
 set title "Redo length = " . redolen . " GB"
 
-set lmargin 9
-set rmargin 2
-set tmargin 3
+# set lmargin 9
+# set rmargin 2
+# set tmargin 3
 
 set style fill solid 0.2
 
-#set key bottom inside right autotitle columnhead invert opaque samplen 2 width 2
-unset key
+# set key top inside left autotitle columnhead invert opaque samplen 2 width 2
+
+# For restart with background cleaner and recovery:
+set key outside bottom right horizontal autotitle columnhead opaque  Right  width 2
+# unset key
 
 set xlabel "Time (min)"
-set xrange [0:360]
-set xtics 0,60
+set xrange [0:14]
+set xtics 0,1
 set mxtics 4
 
 set ylabel "Throughput (ktps)"
-# set yrange [0:90]
+set yrange [0:35]
 set ytics
 
 #set decimal locale
@@ -72,7 +76,21 @@ set ytics
 
 file = dir."/tput.txt"
 
-plot file using (column(0)/60):(column(1)/1000):(column(2)/1000) with filledcurves above notitle lc rgb '#1B9E77', \
-    '' using (column(0)/60):(column(1)/1000):(column(2)/1000) with filledcurves below notitle lc rgb '#d95f02', \
-    '' using (column(0)/60):(column(1)/1000) with lines ls 1 title "ARIES restart", \
-    '' using (column(0)/60):(column(2)/1000) with lines ls 2 title "Instant restart"
+# plot file using (column(0)/60):(column(1)/1000):(column(2)/1000) with filledcurves above notitle lc rgb '#1B9E77', \
+#     '' using (column(0)/60):(column(1)/1000):(column(2)/1000) with filledcurves below notitle lc rgb '#d95f02', \
+#     '' using (column(0)/60):(column(1)/1000) with lines ls 1 title "ARIES restart", \
+#     '' using (column(0)/60):(column(2)/1000) with lines ls 2 title "Instant restart"
+
+# For restart with background recovery and cleaner
+plot file using (column(0)/60):(column(2)/1000) with lines ls 1, \
+    '' using (column(0)/60):(column(3)/1000) with lines ls 2, \
+    '' using (column(0)/60):(column(1)/1000) with lines ls 3, \
+    '' using (column(0)/60):(column(4)/1000) with lines ls 4
+
+# For restart with partitioned log index
+# plot file using (column(0)/60):(column(1)/1000):(column(3)/1000) with filledcurves above notitle lc rgb '#7570b3', \
+#     '' using (column(0)/60):(column(2)/1000):(column(3)/1000) with filledcurves below notitle lc rgb '#d95f02', \
+#     '' using (column(0)/60):(column(2)/1000):(column(3)/1000) with filledcurves above notitle lc rgb '#1b9e77', \
+#     '' using (column(0)/60):(column(2)/1000) with lines ls 1 title "ARIES restart", \
+#     '' using (column(0)/60):(column(3)/1000) with lines ls 2 title "Instant restart", \
+#     '' using (column(0)/60):(column(1)/1000) with lines ls 3 title "Part. log index"

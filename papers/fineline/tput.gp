@@ -42,8 +42,8 @@ set rmargin 2
 set key bottom inside right autotitle columnhead invert opaque samplen 2 width 2
 
 set xlabel "Time (sec)"
-set xrange [0:300]
-set xtics 0,30
+set xrange [0:600]
+set xtics 0,60
 set mxtics 4
 
 set ylabel "Throughput (ktps)"

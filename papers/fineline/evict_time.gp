@@ -1,7 +1,12 @@
+set terminal cairolatex standalone pdf size 7cm,4cm color colortext transparent font "default,8"
+set output "evict_time_" . bufsize . ".tex"
+set datafile separator "\t"
+
 set style line 11 lc rgb '#808080' lt 1
 set border 11 back ls 11
 set style line 12 lc rgb '#444444' lt 0 lw 1
 set grid back ls 12
+set style fill transparent solid 0.5 border
 
 # line styles for ColorBrewer Dark2
 # for use with qualitative/categorical data
@@ -29,26 +34,30 @@ set palette defined ( 0 '#1B9E77',\
 		      5 '#E6AB02',\
 		      6 '#A6761D',\
 		      7 '#666666' )
-
 set tics textcolor rgb "black"
 
-set terminal cairolatex standalone pdf size 8.5cm,4cm dashed color colortext transparent font "default,9"
-set output "xctlatency.tex"
-set datafile separator "\t"
+# set lmargin 7
+# set rmargin 11
 
-set key top right autotitle columnhead opaque samplen 2 width 2
-
-# set title "Segment size: 1024 KB (adaptive)"
-# unset key
+set key outside right top invert horizontal Right opaque width 4
 
 set xlabel "Time (min)"
-set xrange [4:14]
+set xrange [0:25]
+# set xtics 0,30
+# set mxtics 4
 
-set ylabel "Latency (ms)"
-set ytics 0.1,10 nomirror
-set yrange [0.1:150]
-set logscale y
+set y2label "Avg. evict time (ms)" offset 1.5 rotate by 270
+set logscale y2
+set y2tics
+set format y2 "$10^{%L}$"
+unset my2tics
+set y2range [0.00001:10]
 
-file = dir."/xctlatency.txt"
+set ylabel "Throughput (ktps)" offset -1
+set yrange [0:30]
 
-plot for [i=1:ncolumns] file using (column(0)/60):i with lines ls i
+file1 = dir."/evict_time_smooth.txt"
+file2 = dir."/agglog_smooth.txt"
+
+plot file1 using (column(0)/60):($1/1000000/threads) with lines axes x1y2 ls 2 title "Evict time", \
+    file2 using (column(0)/60):($1/1000) with lines axes x1y1 ls 3 title "Txn. throughput"

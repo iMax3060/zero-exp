@@ -16,7 +16,7 @@ set style fill transparent solid 0.5 border
 # line styles
 set style line 1 lw 1 lc rgb '#1B9E77' # dark teal
 set style line 2 lw 1 lc rgb '#D95F02' # dark orange
-set style line 3 lw 3 lc rgb '#7570B3' # dark lilac
+set style line 3 lw 1 lc rgb '#7570B3' # dark lilac
 set style line 4 lw 3 lc rgb '#E7298A' # dark magenta
 set style line 5 lw 3 lc rgb '#66A61E' # dark lime green
 set style line 6 lw 3 lc rgb '#E6AB02' # dark banana
@@ -42,7 +42,7 @@ set style data histogram
 set style fill solid 1 border -1
 set style histogram cluster gap 1
 
-set key bottom inside left opaque samplen 2 width 2
+set key top inside right opaque samplen 2 width 2
 set tics textcolor rgb "black"
 
 set xlabel "Redo length (GB)"
@@ -51,8 +51,9 @@ set xrange [-1:ncols]
 set title "Transactions missed due to failure"
 
 set ylabel "Missed txns. ($\\times 10^6$)"
-set ytics 0,4
+set ytics 0,2
 set yrange [0:]
 
-plot dir."/txnmiss.txt" using ($2/1000000):xtic(1) ls 1 title "ARIES restart", \
-    '' using ($3/1000000) ls 2 title "Instant restart"
+plot dir."/txnmiss.txt" using ($3/1000000):xtic(1) ls 1 title "ARIES restart", \
+    '' using ($4/1000000) ls 2 title "Instant restart", \
+    '' using ($2/1000000) ls 3 title "Part. log index"

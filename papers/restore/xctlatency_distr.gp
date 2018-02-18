@@ -19,7 +19,7 @@ set auto x
 unset xtics
 set xtics nomirror scale 0 font ",8"
 set xrange [-0.5:(ncolumns-0.5)]
-set xlabel "Buffer size"
+set xlabel "Segment size (KB)"
 
 set style fill empty
 set boxwidth 0.5

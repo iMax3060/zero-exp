@@ -3,6 +3,7 @@
 EXPDIR=$1
 PLOTDIR=gnuplot
 
+LOG_DEV=sda
 ARCH_DEV=sdg
 DB_DEV=sdh
 BACKUP_DEV=sdi
@@ -19,10 +20,9 @@ function pdfcompile()
 
 STATS="losses bandwidth"
 TSERIES="xctlatency xctlatency_distr bandwidth_lines"
-SEGSIZE=4096
 
 # Size of window when applying moving average
-MAVG_WINDOW=5
+MAVG_WINDOW=10
 # How many seconds before failure to use in avg. pre-failure throughput calculation
 PRE_FAILURE_WINDOW=60
 
@@ -35,13 +35,16 @@ done
 rm -f pdflatex.txt
 
 COUNT=0
-
-for d in $EXPDIR/restore-*; do
+for d in $(ls $EXPDIR | grep restore- | sort -n -t'-' -k2); do
     d=$(basename $d)
-    BUFSIZE=${d#restore-}
-    BUFSIZE=$((BUFSIZE / 1000))
+    echo $d
+    SEGSIZE=${d#restore-}
+    # BUFSIZE=${d#restore-}
+    # BUFSIZE=$((BUFSIZE / 1000))
     DIR=$EXPDIR/$d
     COUNT=$((COUNT + 1))
+    TITLE=$((SEGSIZE))
+    TITLE2=$(bc -l <<< "scale=1; $SEGSIZE / 1000")
 
     # expected columns of agglog.txt:
     # xct_end restore_begin restore_segment restore_end page_write page_read 
@@ -77,14 +80,14 @@ for d in $EXPDIR/restore-*; do
         }' \
         $DIR/agglog.txt > $DIR/agglog_ext.txt
 
-    awk '
-        BEGIN { passed = 0 }
-        {
-            if (!passed) { passed = $2; skip; }
-            acc += $1;
-            print acc, $5, $6
-        }' \
-        $DIR/agglog.txt > $DIR/agglog_accum.txt
+#     awk '
+#         BEGIN { passed = 0 }
+#         {
+#             if (!passed) { passed = $2; skip; }
+#             acc += $1;
+#             print acc, $5, $6
+#         }' \
+#         $DIR/agglog.txt > $DIR/agglog_accum.txt
 
     # Smooth out both transaction throughput and page reads with moving average
     # expected columns of agglog_ext.txt:
@@ -117,17 +120,16 @@ for d in $EXPDIR/restore-*; do
     # extract recovery begin and end on X axis
     RBEGIN=$(awk '$2 > 0 { print NR; exit }' $DIR/agglog_ext.txt)
     REND=$(awk '$4 > 0 { print NR; exit }' $DIR/agglog_ext.txt)
+    if [ -z "$REND" ]; then REND=$(cat $DIR/agglog_ext.txt | wc -l); fi
 
     cat $DIR/agglog_smooth.txt |
-    awk -v segsize=$SEGSIZE -v title=$BUFSIZE \
+    awk -v segsize=$SEGSIZE -v title=$TITLE \
         'BEGIN {
-            began = 0
-            print title " GB"
+            print title " KB"
          } 
          NR > 1 { 
              if ($4 > 0) { exit }
-             if (!began) { began = $2 }
-             if (began) { print $3 * segsize * 8 / 1024 }
+             print $3 * segsize * 8 / 1024
          }' \
         > $DIR/bandwidth.txt
 
@@ -137,7 +139,7 @@ for d in $EXPDIR/restore-*; do
     mv $EXPDIR/tmp.txt $EXPDIR/bandwidth_lines.txt
 
     cat $DIR/agglog.txt |
-    awk -v segsize=$SEGSIZE -v title=$BUFSIZE \
+    awk -v segsize=$SEGSIZE -v title=$TITLE \
         'BEGIN { cnt = 0; sum = 0; began = false; } 
          NR > 1 { 
              if (!began) { began = $2; }
@@ -149,23 +151,43 @@ for d in $EXPDIR/restore-*; do
 
     if [ -f $DIR/iostat.txt ]; then
         cat $DIR/iostat.txt |
-        awk -v arch=$ARCH_DEV -v db=$DB_DEV -v backup=$BACKUP_DEV \
+        awk -v archdev=$ARCH_DEV -v logdev=$LOG_DEV -v dbdev=$DB_DEV -v backupdev=$BACKUP_DEV \
             'BEGIN { track = 0; }
-             { if (track == 4) { print a, b, c, d; track = 0 } }
-             $1 == arch { a = $6; track++ }
-             $1 == backup { b = $6; track++ }
-             $1 == db { c = $7; track++}
-             $1 == db { d = $6; track++}' \
+             { if (track == 8) { print a, b, c, d, e, f, g, h; track = 0 } }
+             $1 == dbdev { e = $7; track++ }
+             $1 == dbdev { f = $6; track++ }
+             $1 == archdev { c = $7; track++ }
+             $1 == archdev { d = $6; track++ }
+             $1 == logdev { a = $7; track++}
+             $1 == logdev { b = $6; track++}
+             $1 == backupdev { g = $7; track++}
+             $1 == backupdev { h = $6; track++}' \
             > $DIR/iostat_dev.txt
     fi
 
-    awk -v v=$BUFSIZE '{ sum += $8 } END { print v,(sum > 0 ? sum : 0) }' \
+    if [ -f $DIR/iostat.txt ]; then
+        cat $DIR/iostat.txt |
+        awk -v archdev=$ARCH_DEV -v logdev=$LOG_DEV -v dbdev=$DB_DEV -v backupdev=$BACKUP_DEV \
+            'BEGIN { track = 0; }
+             { if (track == 8) { print a, b, c, d, e, f, g, h; track = 0 } }
+             $1 == dbdev { e = $5; track++ }
+             $1 == dbdev { f = $4; track++ }
+             $1 == archdev { c = $5; track++ }
+             $1 == archdev { d = $4; track++ }
+             $1 == logdev { a = $5; track++}
+             $1 == logdev { b = $6; track++}
+             $1 == backupdev { g = $7; track++}
+             $1 == backupdev { h = $6; track++}' \
+            > $DIR/iops_dev.txt
+    fi
+
+    awk -v v=$TITLE '{ sum += $8 } END { print v,(sum > 0 ? sum : 0) }' \
         $DIR/agglog_smooth.txt >> $EXPDIR/losses.txt
 
     # Smooth-out xct latency output
     touch $EXPDIR/xctlatency.txt
-    awk -v bufsize=$BUFSIZE -v window=$MAVG_WINDOW '
-         BEGIN { print bufsize " GB" }
+    awk -v title=$TITLE -v window=$MAVG_WINDOW '
+         BEGIN { print title " KB" }
          $1 > 0 {
             n = window
             for (i = 0; i < n-1; i++) {
@@ -187,7 +209,7 @@ for d in $EXPDIR/restore-*; do
     mv $EXPDIR/tmp.txt $EXPDIR/xctlatency.txt
 
     # Print latency distribution during restore, without smoothing
-    awk -v rbegin=$RBEGIN -v rend=$REND -v bufsize=$BUFSIZE '
+    awk -v rbegin=$RBEGIN -v rend=$REND -v title=$TITLE '
         function round(x) {
             return int(x + 0.5)
         }
@@ -222,7 +244,7 @@ for d in $EXPDIR/restore-*; do
             }
             # print quartiles
             printf "%s\t%.8f\t%.8f\t%.8f\t%.8f\t%.8f\n", \
-                bufsize " GB", min, q1, q2, q3, max
+                title, min, q1, q2, q3, max
         
         }' $DIR/xctlatency.txt >> $EXPDIR/xctlatency_distr.txt
 
@@ -233,27 +255,34 @@ for d in $EXPDIR/restore-*; do
     # fi
 
     echo RBEGIN=$RBEGIN, REND=$REND
+    RBEGIN=300
 
-    gnuplot -e "dir='"$DIR"'; bufsize="$BUFSIZE"; rbegin="$RBEGIN"; rend="$REND"; ymax="$YMAX";" \
+    gnuplot -e "dir='"$DIR"'; mytitle="$TITLE"; mytitle2='"$TITLE2"'; rbegin="$RBEGIN"; rend="$REND"; ymax="$YMAX";" \
         tput_restore.gp
 
-    gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE";" \
+    gnuplot -e "dir='"$EXPDIR"/"$d"'; mytitle="$TITLE";" \
         bandwidth_restore.gp
 
-    gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE";" \
+    gnuplot -e "dir='"$EXPDIR"/"$d"'; mytitle="$TITLE";" \
         tracerestore.gp
 
-    gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE";" \
-        tput_accum.gp
+#     gnuplot -e "dir='"$EXPDIR"/"$d"'; mytitle="$TITLE";" \
+#         tput_accum.gp
 
-    gnuplot -e "dir='"$EXPDIR"/"$d"'; bufsize="$BUFSIZE"" \
+    gnuplot -e "dir='"$EXPDIR"/"$d"'; mytitle="$TITLE"" \
+        iops.gp
+
+    gnuplot -e "dir='"$EXPDIR"/"$d"'; mytitle="$TITLE"" \
         iostat.gp
 
-    pdfcompile tput_"$BUFSIZE"
-    pdfcompile bandwidth_"$BUFSIZE"
-    pdfcompile accum_"$BUFSIZE"
-    pdfcompile tracerestore_"$BUFSIZE"
-    pdfcompile iostat_"$BUFSIZE"
+    pdfcompile tput_"$TITLE"
+    pdfcompile bandwidth_"$TITLE"
+    # pdfcompile accum_"$TITLE"
+    pdfcompile tracerestore_"$TITLE"
+    pdfcompile iostat_"$TITLE"
+    pdfcompile iops_"$TITLE"
+
+    rm -f *.aux *.log *-inc.pdf *.tex
 done
 
 for s in $STATS; do
@@ -280,9 +309,9 @@ if [ $COUNT -gt 1 ]; then
     pdfcompile xctlatency
     pdfcompile xctlatency_distr
     pdfcompile bandwidth_lines
-    pdfcompile key
 
-    pdfcrop key.pdf key.pdf > /dev/null
+    # pdfcompile key
+    # pdfcrop key.pdf key.pdf > /dev/null
 
     rm -f *.aux *.log *-inc.pdf *.tex
     pdfunite tput_*.pdf bandwidth_*.pdf \
