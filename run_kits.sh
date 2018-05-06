@@ -6,6 +6,7 @@ source config.sh || (echo "config.sh not found!"; exit)
 function clean_up {
     kill $IOSTAT_PID > /dev/null 2>&1
     kill $MPSTAT_PID > /dev/null 2>&1
+    kill $FREE_PID > /dev/null 2>&1
 }
 
 RUN_GDB=false
@@ -19,6 +20,9 @@ IOSTAT_PID=$!
 
 mpstat 1 > mpstat.txt 2> /dev/null &
 MPSTAT_PID=$!
+
+free -m -c 100000 -s 1 > free.txt 2> /dev/null &
+FREE_PID=$!
 
 # Call clean_up when recieving one of these signals
 trap clean_up SIGHUP SIGINT SIGTERM

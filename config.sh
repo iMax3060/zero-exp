@@ -18,6 +18,7 @@ DEVS[backup]=/dev/sdi1
 
 # MOUNTPOINT[log]=/dev/shm/log
 MOUNTPOINT[log]=/mnt/log
+# MOUNTPOINT[archive]=/dev/shm/archive
 MOUNTPOINT[archive]=/mnt/archive
 MOUNTPOINT[db]=/mnt/db
 MOUNTPOINT[backup]=/mnt/backup
