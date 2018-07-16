@@ -1,0 +1,5 @@
+exp FineLine WAL LSM
+R-only 1865.18 1473.93 1127.45
+R-heavy 1198.04 234.30 431.21
+Balanced 275.94 197.33 89.76
+W-heavy 269.43 180 47.93
