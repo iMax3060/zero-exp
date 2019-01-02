@@ -2,7 +2,11 @@
 
 RUN_CMD="./run_kits.sh"
 
-function die() { echo >&2 "$@"; exit 1; }
+function die() {
+   rm -f $tmp_files   # remove temporary files created
+   echo >&2 "$@";
+   exit 1;
+}
 
 # $1 = directory prefix
 function findFirstFree() {
@@ -18,8 +22,7 @@ function functionExists() {
     return $?
 }
 
-function usage()
-{
+function usage() {
 cat << EOF
 usage: $0 [options] <experiment-file>
 
@@ -31,8 +34,6 @@ Available options are:
   --run-missing
     Iterate over output directory and re-run experiment for any missing
     or failed configuration
-  --versioning
-    Saves mercurial revisions and diff
   --help
     Shows this message
   --debug
@@ -102,8 +103,7 @@ if (($DEBUG)); then
     RUN_CMD="$RUN_CMD --debug"
 fi
 
-function runOnce()
-{
+function runOnce() {
     local config=$1
     local iter=${2:-0}
 
@@ -159,6 +159,8 @@ if (($RUN_MISSING)); then
             mkdir -p $r/$v
             mv *.txt $r/$v/
             cp $BASE_CFG $r/$v/
+            rm -f $tmp_files
+            tmp_files=""
 
             # one single run failure causes repeat script to fail too
             if [[ $RC != 0 ]]; then
@@ -179,6 +181,8 @@ else
             mkdir -p $REPDIR/$v
             mv *.txt $REPDIR/$v/
             cp $BASE_CFG $REPDIR/$v/
+            rm -f $tmp_files
+            tmp_files=""
             if [[ $RC == 0 ]]; then
                 touch $REPDIR/$v/_SUCCESS
             fi
